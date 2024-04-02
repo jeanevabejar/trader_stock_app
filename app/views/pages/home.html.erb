@@ -1,4 +1,28 @@
-<div>
-  <h1 class="font-bold text-4xl">Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
+<div class= "flex flex-col justify-center items-center">
+
+<h1 class="text-2xl mt-5">Dashboard</h1>
+<div class="flex flex-col justify-center items-center mt-20">
+<% if user_signed_in? %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete } %>
+    <%= link_to "Edit registration", edit_user_registration_path %>
+<% elsif !admin_signed_in? %>
+    <%= link_to "Sign up as User", new_user_registration_path %>
+    <br>
+    <%= link_to "Sign in as User", new_user_session_path %>
+<% end %>
+<br>
+<br>
+<br>
+<br>
+<h3 class="text-2xl mt-5">Admin?</h3>
+<% if admin_signed_in? %>
+    <%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: {  turbo_method: :delete } %>
+    <%= link_to "Edit registration", edit_admin_registration_path %>
+<% elsif !user_signed_in? %>
+    <%= link_to "Sign up as admin", new_admin_registration_path %> <%# delete this after making an admin %>
+    <br>
+    <%= link_to "Sign in as admin", new_admin_session_path %>
+<% end %>
+</div>
+
 </div>
