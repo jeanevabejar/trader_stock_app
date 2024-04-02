@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+gems
+
+gem "devise", "~> 4.9"
+
+gem 'iex-ruby-client'
+
+
