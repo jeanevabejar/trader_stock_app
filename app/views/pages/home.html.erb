@@ -17,9 +17,7 @@
 <h3 class="text-2xl mt-5">Admin?</h3>
 <% if admin_signed_in? %>
     <%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: {  turbo_method: :delete } %>
-    <%= link_to "Edit registration", edit_admin_registration_path %>
 <% elsif !user_signed_in? %>
-    <%= link_to "Sign up as admin", new_admin_registration_path %> <%# delete this after making an admin %>
     <br>
     <%= link_to "Sign in as admin", new_admin_session_path %>
 <% end %>
