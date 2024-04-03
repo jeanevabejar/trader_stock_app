@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stock_name: MyString
+  is_buy?: false
+  share: 1
+  price: 9.99
+  amount: 9.99
+
+two:
+  stock_name: MyString
+  is_buy?: false
+  share: 1
+  price: 9.99
+  amount: 9.99
