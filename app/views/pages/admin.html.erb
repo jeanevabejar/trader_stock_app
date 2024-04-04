@@ -1,4 +1,35 @@
+<% flash.each do |key, value| %>
+  <div class=" alert alert-<%= key %> text-red-500">
+    <%= value %>
+  </div>
+<% end %>
 <div>
-  <h1 class="font-bold text-4xl">Pages#admin</h1>
-  <p>Find me in app/views/pages/admin.html.erb</p>
+  <%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: {  turbo_method: :delete } %>
+  <h1 class="font-bold text-4xl">Admin Dashboard</h1>
+
+  <div class="mt-10">
+    <%= link_to "Create new User/Trader", new_user_registration_path %>
+  </div>
 </div>
+
+<table class="w-full text-sm text-left rtl:text-right">
+  <thead>
+    <tr>
+      <th scope="col" class="px-6 py-5">User ID</th>
+      <th scope="col" class="px-6 py-5">Email</th>
+      <th scope="col" class="px-6 py-5">Edit Trader</th>
+      <th scope="col" class="px-6 py-5">Inspect Trader</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="px-6 py-4"><%= user.id %></td>
+        <td class="px-6 py-4"><%= user.email %></td> 
+        <td class="px-6 py-4"><%= link_to edit_user_registration_path(user) do %>edit<% end %></td>
+        <td class="px-6 py-4">Inspect</td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
