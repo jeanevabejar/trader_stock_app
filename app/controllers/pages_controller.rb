@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   end
 
   def users
+  @client = clients
   end
 
   private
