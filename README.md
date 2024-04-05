@@ -2,7 +2,7 @@ checklist:
 
 Admin 
 - [x] User Story #1: As an Admin, I want to create a new trader to manually add them to the app 
-- [ ] User Story #2: As an Admin, I want to edit a specific trader to update his/her details 
+- [x] User Story #2: As an Admin, I want to edit a specific trader to update his/her details 
 - [ ] User Story #3: As an Admin, I want to view a specific trader to show his/her details 
 - [x] User Story #4: As an Admin, I want to see all the trader that registered in the app so I can track all the traders 
 - [ ] User Story #5: As an Admin, I want to have a page for pending trader sign up to easily check if there's a new trader sign up 
@@ -10,7 +10,7 @@ Admin
 - [ ] User Story #7: As an Admin, I want to see all the transactions so that I can monitor the transaction flow of the app
 
 Trader
-- [ ] User Story #1: As a Trader, I want to create an account to buy and sell stocks
+- [x] User Story #1: As a Trader, I want to create an account to buy and sell stocks
 - [ ] User Story #2: As a Trader, I want to log in my credentials so that I can access my account on the app
 - [ ] User Story #3: As a Trader, I want to receive an email to confirm my pending Account signup
 - [ ] User Story #4: As a Trader, I want to receive an approval Trader Account email to notify me once my account has been approved
