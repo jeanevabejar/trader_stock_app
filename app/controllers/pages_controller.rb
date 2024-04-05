@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    no_turning_back
   end
 
   def users
@@ -29,6 +30,14 @@ class PagesController < ApplicationController
     unless user_signed_in?
       flash[:notice] = "The page you're trying to access is for Traders only."
       redirect_to pages_admin_path
+    end
+  end
+
+  def no_turning_back
+    if admin_signed_in?
+      redirect_to pages_admin_path
+    elsif user_signed_in?
+      redirect_to pages_user_path
     end
   end
 end
