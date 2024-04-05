@@ -25,6 +25,7 @@ class PagesController < ApplicationController
   end
 
   def home
+    no_turning_back
   end
 
   def users
@@ -49,4 +50,12 @@ class PagesController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
  end
+
+  def no_turning_back
+    if admin_signed_in?
+      redirect_to pages_admin_path
+    elsif user_signed_in?
+      redirect_to pages_user_path
+    end
+  end
 end
