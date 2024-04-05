@@ -3,7 +3,7 @@ checklist:
 Admin 
 - [x] User Story #1: As an Admin, I want to create a new trader to manually add them to the app 
 - [x] User Story #2: As an Admin, I want to edit a specific trader to update his/her details 
-- [ ] User Story #3: As an Admin, I want to view a specific trader to show his/her details 
+- [x] User Story #3: As an Admin, I want to view a specific trader to show his/her details 
 - [x] User Story #4: As an Admin, I want to see all the trader that registered in the app so I can track all the traders 
 - [ ] User Story #5: As an Admin, I want to have a page for pending trader sign up to easily check if there's a new trader sign up 
 - [ ] User Story #6: As an Admin, I want to approve a trader sign up so that he/she can start adding stocks 
