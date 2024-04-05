@@ -34,6 +34,8 @@ class PagesController < ApplicationController
 
   def users
   @client = clients
+  @user = User.all
+  @search = search
   end
 
   private
