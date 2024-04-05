@@ -1,9 +1,23 @@
 class PagesController < ApplicationController
   before_action :require_admin, only: [ :admin, :transactions ]
   before_action :require_user, only: :users
+  before_action :authenticate_admin!, only: [ :edit_user, :update_user ]
 
   def admin
     @users = User.all
+  end
+
+  def edit_user
+    @user = User.find(params[:id])
+  end
+
+  def update_user
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to pages_admin_path, notice: 'User was successfully updated.'
+    else
+      render :edit_user
+    end
   end
 
   def transactions
@@ -31,4 +45,8 @@ class PagesController < ApplicationController
       redirect_to pages_admin_path
     end
   end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+ end
 end
