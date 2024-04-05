@@ -5,14 +5,14 @@
     <th>Stock Code</th>
     <th>Company Name</th>
     <th>Market Price</th>
-    <th>Market cap</th>
+
   </tr>
    <%@client.stock_market_list(:mostactive).each do |data|%>
    <tr>
     <th><%= data.symbol%></th>
     <th><%= data.company_name%></th>
     <th>$<%= data.iex_realtime_price%></th>
-    <th>$<%= data.market_cap%></th>
+   
 
   </tr>
       <% end %>
@@ -20,7 +20,17 @@
 </table>
  </div>
    <div class="border border-black w-[50%]">chart</div>
-   <div class="border border-black w-[25%]">buy&sell</div>
+   <div class="border border-black w-[25%] ">buy&sell
+ <% @search.each do |data|%>
+ <% if data.symbol.include?("AAPL") %>
+ <%= data.symbol%>
+ <%= data.name%>
+
+ <% end %>
+
+ <% end %>
+    
+   </div>
   </div>
   <div>
     transaction history
