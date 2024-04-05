@@ -20,6 +20,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def show_user
+    @user = User.find(params[:id])
+  end
+
   def transactions
     @transactions = Transaction.all
   end
