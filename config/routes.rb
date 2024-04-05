@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  get 'admin/edit_user/:id', to: 'pages#edit_user', as: :edit_user
+  patch 'admin/update_user/:id', to: 'pages#update_user', as: :update_user
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

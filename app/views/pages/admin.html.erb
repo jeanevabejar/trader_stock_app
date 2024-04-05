@@ -27,7 +27,7 @@
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to edit_user_registration_path(user) do %>edit<% end %></td>
+        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get %></td>
         <td class="px-6 py-4">Inspect</td>
       </tr>
     <% end %>
