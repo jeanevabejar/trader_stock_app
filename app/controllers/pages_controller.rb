@@ -7,7 +7,20 @@ class PagesController < ApplicationController
 
 
   def admin
-    @users = User.all
+    @users = User.all.order("id")
+  end
+
+  def new_user
+    @user = User.new
+  end
+
+  def create_user
+    @user = User.build(user_params)
+    if @user.save
+      redirect_to pages_admin_path, notice: 'User was successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit_user
@@ -38,7 +51,7 @@ class PagesController < ApplicationController
     @search = search
 
   end
-  
+
 
   private
 
