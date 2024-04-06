@@ -72,3 +72,5 @@ end
 gem "devise", "~> 4.9"
 
 gem 'iex-ruby-client'
+
+gem 'ransack'
