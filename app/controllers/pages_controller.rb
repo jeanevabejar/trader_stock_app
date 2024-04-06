@@ -33,9 +33,9 @@ class PagesController < ApplicationController
   end
 
   def users
-  @client = clients
-  @user = User.all
-  @search = search
+    @client = clients
+    @user = User.find(params[:id])
+    @search = search
   end
 
   private
@@ -62,7 +62,7 @@ class PagesController < ApplicationController
     if admin_signed_in?
       redirect_to pages_admin_path
     elsif user_signed_in?
-      redirect_to pages_user_path
+      redirect_to pages_user_path(current_user)
     end
   end
 end
