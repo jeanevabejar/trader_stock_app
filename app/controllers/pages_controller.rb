@@ -1,18 +1,19 @@
 class PagesController < ApplicationController
   before_action :require_admin, only: [ :admin, :transactions ]
   before_action :require_user, only: :users
+  before_action :set_user, only: [:edit_user, :update_user, :show_user]
   before_action :authenticate_admin!, only: [ :edit_user, :update_user ]
+  before_action :authenticate_user!, only: :users
+
 
   def admin
     @users = User.all
   end
 
   def edit_user
-    @user = User.find(params[:id])
   end
 
   def update_user
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
@@ -21,7 +22,6 @@ class PagesController < ApplicationController
   end
 
   def show_user
-    @user = User.find(params[:id])
   end
 
   def transactions
@@ -33,12 +33,18 @@ class PagesController < ApplicationController
   end
 
   def users
+    @user = current_user
     @client = clients
-    @user = User.find(params[:id])
     @search = search
+
   end
+  
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def require_admin
     unless admin_signed_in?
@@ -62,7 +68,7 @@ class PagesController < ApplicationController
     if admin_signed_in?
       redirect_to pages_admin_path
     elsif user_signed_in?
-      redirect_to pages_user_path(current_user)
+      redirect_to pages_user_path
     end
   end
 end

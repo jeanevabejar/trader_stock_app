@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+ 
+    
     def clients
         @client =  IEX::Api::Client.new   
     end
@@ -7,4 +9,7 @@ class ApplicationController < ActionController::Base
         @client = clients
         @client.ref_data_symbols()
     end
+
+   
+ 
 end

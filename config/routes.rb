@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'pages/admin', to: 'pages#admin', as: :pages_admin
-  get 'pages/users/:id', to: 'pages#users', as: :pages_user
+  get 'pages/users', to: 'pages#users', as: :pages_user
 
   devise_for :admin, controllers: {
     sessions: 'admin/sessions'
