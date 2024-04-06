@@ -28,6 +28,6 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
-    pages_user_path(id: resource.id)
+    pages_user_path
   end
 end

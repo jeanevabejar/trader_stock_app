@@ -63,6 +63,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    pages_user_path(id: resource.id)
+    pages_user_path
   end
 end
