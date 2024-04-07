@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   devise_for :users,  controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations'
   }
 
   get 'admin/new_user', to: 'pages#new_user', as: :new_user
