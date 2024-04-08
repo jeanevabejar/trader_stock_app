@@ -4,6 +4,8 @@
  <div>
     <%= form.label :email %>
     <%= form.text_field :email %>
+    <span>Approved User for Trading</span>
+    <%= form.check_box :is_approved %>
  </div>
 
  <%= form.submit "Update User" %>
