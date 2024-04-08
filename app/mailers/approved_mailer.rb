@@ -5,9 +5,9 @@ class ApprovedMailer < ApplicationMailer
   #
   #   en.approved_mailer.is_approved.subject
   #
-  def is_approved
-    @greeting = "Hi"
+  def is_approved(user_email)
+    @user_email = user_email
 
-    mail to: "to@example.org"
-  end
+    mail to: @user_email, subject: 'Your Account has been approved!'
+   end
 end
