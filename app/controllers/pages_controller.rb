@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :require_admin, only: [ :admin, :transactions ]
   before_action :require_user, only: :users
-  before_action :set_user, only: [:edit_user, :update_user, :show_user]
+  before_action :set_user, only: [:edit_user, :update_user, :show_user ]
   before_action :authenticate_admin!, only: [ :edit_user, :update_user ]
   before_action :authenticate_user!, only: :users
 
@@ -28,6 +28,9 @@ class PagesController < ApplicationController
 
   def update_user
     if @user.update(user_params)
+      if params[:user][:is_approved] == '1'
+        ApprovedMailer.with(user: @user).is_approved.deliver_later
+      end
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
       render :edit_user
@@ -49,7 +52,6 @@ class PagesController < ApplicationController
     @user = current_user
     @client = clients
     @search = search
-
   end
 
 
@@ -74,7 +76,7 @@ class PagesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :is_approved)
  end
 
   def no_turning_back
@@ -84,4 +86,5 @@ class PagesController < ApplicationController
       redirect_to pages_user_path
     end
   end
+
 end
