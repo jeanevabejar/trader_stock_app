@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "slim-select";
+
 
 @layer components {
   html {
@@ -15,4 +15,6 @@
     max-width: 100%;
     max-height: 100vh;
   }
+
+  
 }

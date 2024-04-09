@@ -21,4 +21,8 @@ Rails.application.routes.draw do
   get 'admin/editing user :id', to: 'pages#edit_user', as: :edit_user
   patch 'admin/updating user :id', to: 'pages#update_user', as: :update_user
   get 'admin/showing user :id', to: 'pages#show_user', as: :show_user
+
+  post '/dashboard/user', to: 'pages#users'
+
+
 end

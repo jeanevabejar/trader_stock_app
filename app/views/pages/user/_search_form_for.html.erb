@@ -1,9 +1,0 @@
-<%= form_with url: url_for, id: "search-form", class: "w-[90%]" do |form| %>
-  <%= form.label :data %>
-  <%= form.select :data, options_for_select(@data.first(50).map { |data| [data.name, data.symbol] }), { include_blank: true, data: { controller: 'slim'} }, class: "w-[70%]" %>
-  <%= form.submit "Search" %>
-<% end %>
-
-
-
-
