@@ -4,6 +4,12 @@
  <div>
     <%= form.label :email %>
     <%= form.text_field :email %>
+    <% if @user.confirmed? %>
+    <span>Approved User for Trading</span>
+      <%= form.check_box :is_approved %>
+   <% else %>
+      User haven't confirmed his/her account yet.
+   <% end %>
  </div>
 
  <%= form.submit "Update User" %>
