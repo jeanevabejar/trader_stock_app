@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   before_action :set_user, only: [:edit_user, :update_user, :show_user ]
   before_action :authenticate_admin!, only: [ :edit_user, :update_user ]
   before_action :authenticate_user!, only: :users
-
+  include Searchkick
 
   def admin
     @users = User.all.order("id")
@@ -50,12 +50,27 @@ class PagesController < ApplicationController
 
   def users
     @user = current_user
-    @client = clients
-    @search = search
+    @clients = clients
+    @data = @clients.ref_data_symbols()
+
+
+    if @data.present?
+      if params[:q].present?
+        @q = params[:q].downcase # Convert the search query to lowercase for case-insensitive search
+        @ref_datas = @data.select { |obj| obj.values.any? { |value| value.to_s.downcase.include?(@q) } }
+      else
+        @ref_datas = @data # Return the original collection if no search parameters are provided
+      end
+    else
+      @ref_datas = [] # If no data is present, initialize an empty array
+    end
   end
 
+  
+  
 
   private
+  
 
   def set_user
     @user = User.find(params[:id])
