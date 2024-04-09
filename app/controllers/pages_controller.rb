@@ -29,7 +29,7 @@ class PagesController < ApplicationController
   def update_user
     if @user.update(user_params)
       if params[:user][:is_approved] == '1'
-        ApprovedMailer.with(user: @user).is_approved.deliver_later
+        ApprovedMailer.with(user: @user, user_email: @user.email).is_approved(@user.email).deliver_now
       end
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
