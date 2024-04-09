@@ -1,7 +1,9 @@
-<%= form_tag(url_for, method: :get, id: "search-form") do %>
-  <%= label_tag :q, "Search:" %>
-  <%= text_field_tag :q, params[:q], placeholder: "Enter search query", id: "search-input" %>
-  <%= submit_tag "Search", style: "display: none;" %>
+<%= form_with url: url_for, id: "search-form", class: "w-[90%]" do |form| %>
+  <%= form.label :data %>
+  <%= form.select :data, options_for_select(@data.first(50).map { |data| [data.name, data.symbol] }), { include_blank: true, data: { controller: 'slim'} }, class: "w-[70%]" %>
+  <%= form.submit "Search" %>
 <% end %>
 
-<%= select_tag :data, options_for_select(@ref_datas.map { |data| [data.name, data.symbol]}), prompt: "List of Stocks", include_blank: true, class:"w-[90%]" %>
+
+
+
