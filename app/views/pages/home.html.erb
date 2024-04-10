@@ -1,7 +1,7 @@
-<div class= "flex flex-col justify-center items-center">
+<div class= "center-item flex-col  full-size" >
 
 <h1 class="text-2xl mt-5">Hero Page</h1>
-<div class="flex flex-col justify-center items-center mt-20">
+<div class="center-item flex-col mt-20">
 <% if user_signed_in? %>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete } %>
     <%= link_to "Edit registration", edit_user_registration_path %>
