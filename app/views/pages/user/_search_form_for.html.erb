@@ -1,7 +1,0 @@
-<%= form_tag(url_for, method: :get, id: "search-form") do %>
-  <%= label_tag :q, "Search:" %>
-  <%= text_field_tag :q, params[:q], placeholder: "Enter search query", id: "search-input" %>
-  <%= submit_tag "Search", style: "display: none;" %>
-<% end %>
-
-<%= select_tag :data, options_for_select(@ref_datas.map { |data| [data.name, data.symbol]}), prompt: "List of Stocks", include_blank: true, class:"w-[90%]" %>

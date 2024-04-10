@@ -2,9 +2,9 @@ class PagesController < ApplicationController
   before_action :require_admin, only: [ :admin, :transactions ]
   before_action :require_user, only: :users
   before_action :set_user, only: [:edit_user, :update_user, :show_user ]
+  before_action :search, only: [:users, :transactions ]
   before_action :authenticate_admin!, only: [ :edit_user, :update_user ]
   before_action :authenticate_user!, only: :users
-
 
   def admin
     @users = User.all.order("id")
@@ -42,6 +42,8 @@ class PagesController < ApplicationController
 
   def transactions
     @transactions = Transaction.all
+
+
   end
 
   def home
@@ -50,12 +52,24 @@ class PagesController < ApplicationController
 
   def users
     @user = current_user
-    @client = clients
-    @search = search
+    @data = @clients.ref_data_symbols()
+    if @search_query.present?
+      @price_data = @clients.price(@search_query)
+    else
+      @price_data = []
+    end
+    
   end
 
+  
+  
 
   private
+  
+  def search
+    @clients = clients
+    @search_query = params[:data]
+  end
 
   def set_user
     @user = User.find(params[:id])
