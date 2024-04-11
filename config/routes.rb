@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   get 'admin/new trader', to: 'pages#new_user', as: :new_user
   post 'admin/create trader', to: 'pages#create_user', as: :create_user
 
-  get 'admin/editing user :id', to: 'pages#edit_user', as: :edit_user
-  patch 'admin/updating user :id', to: 'pages#update_user', as: :update_user
-  get 'admin/showing user :id', to: 'pages#show_user', as: :show_user
+  get 'admin/edit_user/:id', to: 'pages#edit_user', as: :edit_user
+  patch 'admin/update_user/:id', to: 'pages#update_user', as: :update_user
+  get 'admin/show_user/:id', to: 'pages#show_user', as: :show_user
 
   post '/dashboard/user', to: 'pages#users'
 

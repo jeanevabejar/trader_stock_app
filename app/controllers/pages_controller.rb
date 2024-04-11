@@ -8,6 +8,8 @@ class PagesController < ApplicationController
 
   def admin
     @users = User.all.order("id")
+    @to_be_approved = @users.confirmed_users
+    @to_be_confirmed = @users.to_confirmed_users
   end
 
   def new_user
@@ -16,6 +18,7 @@ class PagesController < ApplicationController
 
   def create_user
     @user = User.build(user_params)
+    @user.skip_confirmation!
     if @user.save
       redirect_to pages_admin_path, notice: 'User was successfully created.'
     else
@@ -24,16 +27,18 @@ class PagesController < ApplicationController
   end
 
   def edit_user
+    @user.skip_confirmation!
   end
 
   def update_user
     if @user.update(user_params)
-      if params[:user][:is_approved] == '1'
-        ApprovedMailer.with(user: @user, user_email: @user.email).is_approved(@user.email).deliver_now
-      end
+      # @user.confirmed_at = Time.now.utc
+        if params[:user][:is_approved] == '1'
+          ApprovedMailer.with(user: @user, user_email: @user.email).is_approved(@user.email).deliver_now
+        end
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
-      render :edit_user
+      render :edit_user, notice: 'Error updating User.'
     end
   end
 
@@ -58,14 +63,14 @@ class PagesController < ApplicationController
     else
       @price_data = []
     end
-    
+
   end
 
-  
-  
+
+
 
   private
-  
+
   def search
     @clients = clients
     @search_query = params[:data]
@@ -90,7 +95,7 @@ class PagesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :is_approved)
+    params.require(:user).permit(:email, :password, :password_confirmation, :is_approved, :unconfirmed_email)
  end
 
   def no_turning_back
