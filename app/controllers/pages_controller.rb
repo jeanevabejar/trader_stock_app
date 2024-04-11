@@ -8,6 +8,8 @@ class PagesController < ApplicationController
 
   def admin
     @users = User.all.order("id")
+    @to_be_approved = @users.confirmed_users
+    @to_be_confirmed = @users.to_confirmed_users
   end
 
   def new_user
@@ -30,6 +32,7 @@ class PagesController < ApplicationController
 
   def update_user
     if @user.update(user_params)
+      # @user.confirmed_at = Time.now.utc
         if params[:user][:is_approved] == '1'
           ApprovedMailer.with(user: @user, user_email: @user.email).is_approved(@user.email).deliver_now
         end
