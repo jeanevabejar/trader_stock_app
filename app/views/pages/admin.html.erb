@@ -11,7 +11,8 @@
     <%= link_to "Create new Trader", new_user_path %>
   </div>
 </div>
-
+<div class="mt-20">
+  <span class="text-2xl">All Users</span>
 <table class="w-full text-sm text-left rtl:text-right">
   <thead>
     <tr>
@@ -36,4 +37,59 @@
       </tr>
     <% end %>
   </tbody>
+</table>
+</div>
+
+<div class="mt-20">
+<span class="text-2xl">Traders to be approved</span>
+  <table class="w-full text-sm text-left rtl:text-right">
+  <thead>
+    <tr>
+      <th scope="col" class="px-6 py-5">User ID</th>
+      <th scope="col" class="px-6 py-5">Email</th>
+      <th scope="col" class="px-6 py-5">Edit Trader</th>
+      <th scope="col" class="px-6 py-5">Inspect Trader</th>
+      <th scope="col" class="px-6 py-5">Approved for trading</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @to_be_approved.each do |user| %>
+      <tr>
+        <td class="px-6 py-4"><%= user.id %></td>
+        <td class="px-6 py-4"><%= user.email %></td> 
+        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= user.is_approved? %></td>
+      </tr>
+    <% end %>
+  </tbody>
   </table>
+  </div>
+
+<div class="mt-10">
+<span class="text-2xl">Uncomfirmed Traders</span>
+  <table class="w-full text-sm text-left rtl:text-right">
+  <thead>
+    <tr>
+      <th scope="col" class="px-6 py-5">User ID</th>
+      <th scope="col" class="px-6 py-5">Email</th>
+      <th scope="col" class="px-6 py-5">Edit Trader</th>
+      <th scope="col" class="px-6 py-5">Inspect Trader</th>
+      <th scope="col" class="px-6 py-5">Approved for trading</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @to_be_confirmed.each do |user| %>
+      <tr>
+        <td class="px-6 py-4"><%= user.id %></td>
+        <td class="px-6 py-4"><%= user.email %></td> 
+        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= user.is_approved? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+  </div>
