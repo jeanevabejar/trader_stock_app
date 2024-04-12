@@ -28,4 +28,6 @@ Rails.application.routes.draw do
 
   post '/transaction/create_transaction', to: 'transactions#create_transaction', as: :create_transaction
 
+  post '/transaction/buy', to: 'transactions#buy', as: :buy
+
 end
