@@ -1,10 +1,8 @@
 class PagesController < ApplicationController
-  before_action :require_admin, only: [ :admin, :transactions ]
+  before_action :require_admin, only: [ :admin, :transactions, :edit_user, :update_user ]
   before_action :require_user, only: :users
   before_action :set_user, only: [:edit_user, :update_user, :show_user ]
   before_action :search, only: [:users, :transactions ]
-  before_action :authenticate_admin!, only: [ :edit_user, :update_user ]
-  before_action :authenticate_user!, only: :users
 
   def admin
     @users = User.all.order("id")
@@ -17,9 +15,9 @@ class PagesController < ApplicationController
   end
 
   def create_user
-    @user = User.build(user_params)
-    @user.skip_confirmation!
-    if @user.save
+    @user = User.new
+    user_service = UserService.new(@user)
+    if user_service.create(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully created.'
     else
       render :new
@@ -27,15 +25,11 @@ class PagesController < ApplicationController
   end
 
   def edit_user
-    @user.skip_confirmation!
   end
 
   def update_user
-    if @user.update(user_params)
-      # @user.confirmed_at = Time.now.utc
-        if params[:user][:is_approved] == '1'
-          ApprovedMailer.with(user: @user, user_email: @user.email).is_approved(@user.email).deliver_now
-        end
+    user_service = UserService.new(@user)
+    if user_service.update(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
       render :edit_user, notice: 'Error updating User.'
@@ -47,8 +41,6 @@ class PagesController < ApplicationController
 
   def transactions
     @transactions = Transaction.all
-
-
   end
 
   def home
@@ -63,11 +55,7 @@ class PagesController < ApplicationController
     else
       @price_data = []
     end
-
   end
-
-
-
 
   private
 
@@ -95,7 +83,7 @@ class PagesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :is_approved, :unconfirmed_email)
+    params.require(:user).permit(:email, :password, :password_confirmation, :is_approved)
  end
 
   def no_turning_back
@@ -105,5 +93,4 @@ class PagesController < ApplicationController
       redirect_to pages_user_path
     end
   end
-
 end
