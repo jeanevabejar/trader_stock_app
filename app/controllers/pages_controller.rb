@@ -57,12 +57,6 @@ class PagesController < ApplicationController
 
   def users
     @user = current_user
-    @data = @clients.ref_data_symbols()
-    if @search_query.present?
-      @price_data = @clients.price(@search_query)
-    else
-      @price_data = []
-    end
 
   end
 
@@ -74,6 +68,12 @@ class PagesController < ApplicationController
   def search
     @clients = clients
     @search_query = params[:data]
+    @data = @clients.ref_data_symbols()
+    if @search_query.present?
+      @price_data = @clients.price(@search_query)
+    else
+      @price_data = []
+    end
   end
 
   def set_user

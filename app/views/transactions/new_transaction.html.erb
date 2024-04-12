@@ -1,0 +1,16 @@
+<%= form_with(model: @transaction, url: create_transaction_path) do |form| %>
+  <%= form.text_field :price, placeholder: "price" %>
+  <%= form.text_field :share, placeholder: "share amount" %>
+  <%= form.text_field :stock_name, placeholder: "stock" %>
+  <%= form.hidden_field :is_buy?, value: "true" %>
+  <%= form.submit "Buy" %>
+<% end %>
+
+<%= form_with(model: @transaction, url: create_transaction_path) do |form| %>
+  <%= form.text_field :price, placeholder: "price" %>
+  <%= form.text_field :share, placeholder: "share amount" %>
+  <%= form.text_field :stock_name, placeholder: "stock" %>
+  <%= form.hidden_field :is_buy?, value: "false" %>
+  <%= form.submit "sell" %>
+<% end %>
+
