@@ -16,5 +16,9 @@
     max-height: 100vh;
   }
 
-  
+  .center-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

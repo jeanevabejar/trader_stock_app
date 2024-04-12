@@ -1,9 +1,12 @@
+<div class="full-size center-item ">
+  <div class="border border-black w-[50%] h-[50vh] center-item flex-col">
 <h2>Log in User</h2>
 <% flash.each do |key, value| %>
   <div class=" alert alert-<%= key %> text-red-500">
     <%= value %>
   </div>
 <% end %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -22,9 +25,16 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="actions center-item">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+
+<div class="text-[0.8rem]">
+  <%= render "users/shared/links" %>
+</div>
+  
+  </div>
+  
+</div>

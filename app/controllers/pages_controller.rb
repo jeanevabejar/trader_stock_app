@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   before_action :require_admin, only: [ :admin, :transactions, :edit_user, :update_user ]
   before_action :require_user, only: :users
   before_action :set_user, only: [:edit_user, :update_user, :show_user ]
-  before_action :search, only: [:users, :transactions ]
+  before_action :search, only: :users
+ 
 
   def admin
     @users = User.all.order("id")
@@ -49,19 +50,21 @@ class PagesController < ApplicationController
 
   def users
     @user = current_user
-    @data = @clients.ref_data_symbols()
-    if @search_query.present?
-      @price_data = @clients.price(@search_query)
-    else
-      @price_data = []
-    end
+    @search_query = search
   end
 
   private
 
   def search
     @clients = clients
+    @data = @clients.ref_data_symbols()
     @search_query = params[:data]
+    if @search_query.present?
+      @price_data = @clients.price(@search_query)
+      cookies[:data_symbol] = @search_query
+    else
+      @price_data = []
+    end
   end
 
   def set_user

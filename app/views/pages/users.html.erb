@@ -9,7 +9,10 @@
     <h1 class="font-bold text-4xl">Trader Dashboard</h1>
     <div class="border border-black relative w-[10%] capitalize text-center">
       <div class="h-[5vh] flex justify-center items-center">
-         <%= @user.email.split("@")[0]%>
+        
+           <%= @user.email.split("@")[0]%>
+        
+        
       </div>
      
 
@@ -23,7 +26,7 @@
   </div>
 <div class="border border-blue-600 min-w-[100%] h-[60vh] flex">
 
-  <div class="border border-black w-[25%] h-[60vh] text-[0.8rem]">
+  <div class="border border-black w-[25%] h-[60vh] text-[0.8rem] center-item flex-col">
        <%= render 'pages/user/search_form' %>
     <table>
       <tr>
@@ -41,13 +44,13 @@
     </table>
   </div>
   <div class="border border-black w-[50%]">chart</div>
-  <div class="border border-black w-[25%] ">buy&sell
+  <div class="border border-black w-[25%] center-item flex-col">buy&sell
 
 
 <%=@price_data%>
 <%=@search_query%>
 
-<%= render 'transactions/transaction_form' %>
+<%= link_to 'transaction', new_transaction_path %>
 
 
   </div>
