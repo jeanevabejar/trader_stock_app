@@ -36,6 +36,6 @@ end
 private
 
 def transaction_params
-    params.require(:transaction).permit(:price, :share, :amount, :is_buy?, :stock_name, :amount)
+    params.require(:transaction).permit(:price, :share, :amount, :is_buy, :stock_name, :amount)
 end
 end

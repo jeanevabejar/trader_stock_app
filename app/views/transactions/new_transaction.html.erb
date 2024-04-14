@@ -2,7 +2,7 @@
   <%= form.text_field :price, placeholder: "price", value: @price_data  %>
   <%= form.text_field :share, placeholder: "share amount" %>
   <%= form.text_field :stock_name, placeholder: "stock", value: @symbol %>
-  <%= form.hidden_field :is_buy?, value: "true"%>
+  <%= form.hidden_field :is_buy, value: "true"%>
   <%= form.submit "Buy" %>
 <% end %>
 
