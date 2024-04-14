@@ -1,15 +1,10 @@
-<%= form_with(model: @transaction, url: buy_path) do |form| %>
-  <%= form.text_field :price, placeholder: "price", value: @price_data  %>
-  <%= form.text_field :share, placeholder: "share amount" %>
-  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol %>
-  <%= form.hidden_field :is_buy, value: "true"%>
-  <%= form.submit "Buy" %>
-<% end %>
+<%= turbo_frame_tag "modal" do%>
+<div class="modal">
+<%= render 'form' %>
+<%= link_to "Cancel", pages_user_path, data: {
+        controller: "modals",
+        action: "modals#close"
+      }, class: "cancel-button" %>
+</div>
 
-<%= form_with(model: @transaction, url: create_transaction_path) do |form| %>
-  <%= form.text_field :price, placeholder: "price", value: @price_data %>
-  <%= form.text_field :share, placeholder: "share amount" %>
-  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol %>
-  <%= form.submit "sell" %>
 <% end %>
-

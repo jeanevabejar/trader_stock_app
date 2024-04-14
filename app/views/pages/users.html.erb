@@ -3,7 +3,7 @@
     <%= value %>
   </div>
 <% end %>
-<div class="border border-blue-900 full-size">
+<div class="border border-blue-900 full-size overflow-hidden">
   <% if user_signed_in? %>
   <div class="border border-black flex justify-between">
     <h1 class="font-bold text-4xl">Trader Dashboard</h1>
@@ -26,7 +26,7 @@
   </div>
 <div class="border border-blue-600 min-w-[100%] h-[60vh] flex">
 
-  <div class="border border-black w-[25%] h-[60vh] text-[0.8rem] center-item flex-col">
+  <div class="border border-black w-[25%] h-[60vh] text-[0.8rem] center-item flex-col truncate">
        <%= render 'pages/user/search_form' %>
     <table>
       <tr>
@@ -43,21 +43,49 @@
       <% end %>
     </table>
   </div>
-  <div class="border border-black w-[50%]">chart</div>
-  <div class="border border-black w-[25%] center-item flex-col">buy&sell
+  <div class="border border-black w-[50%]">
+
+<%= render 'pages/user/chart' %>
+
+  </div>
+  <div class="border border-black w-[25%] center-item flex-col" >
 
 
-<%=@price_data%>
-<%=@search_query%>
-
-<%= link_to 'transaction', new_transaction_path %>
-
+<%= link_to 'Buy&Sell', new_transaction_path, data: { turbo_frame: "modal"} %>
+<%= cookies[:data_symbol]%>
 
   </div>
   
 </div>
-<div>
-  transaction history
+
+<div class=" max-h-[35vh] overflow-auto p-[1rem]">
+  <table class="w-full" >
+  <thead>
+    <tr>
+      <th>Stock Name</th>
+      <th>Price</th>
+      <th>Share/Quantity</th>
+      <th>Transaction type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |t| %>
+      <tr class="text-center">
+        <td><%= t.stock_name %></td>
+        <td><%= t.price %></td>
+        <td><%= t.share %></td>
+        
+          <% if t.is_buy == true %>
+         <td class="text-green-700 font-medium">Buy</td>
+          <% else %>
+        <td class="text-red-700 font-medium">Sell</td>
+          <% end %>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 </div>
   <%end%>
   
