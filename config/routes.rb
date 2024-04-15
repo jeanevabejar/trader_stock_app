@@ -26,8 +26,9 @@ Rails.application.routes.draw do
 
   get '/transaction/new', to: 'transactions#new_transaction', as: :new_transaction
 
-  post '/transaction/create_transaction', to: 'transactions#create_transaction', as: :create_transaction
 
   post '/transaction/buy', to: 'transactions#buy', as: :buy
+  post '/transaction/sell', to: 'transactions#sell', as: :sell
+
 
 end

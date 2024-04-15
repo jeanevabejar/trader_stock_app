@@ -51,6 +51,7 @@ class PagesController < ApplicationController
   def users
     @user = current_user
     @search_query = search
+    @transactions = Transaction.all
   end
 
   private

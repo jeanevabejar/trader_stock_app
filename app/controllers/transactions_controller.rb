@@ -16,7 +16,6 @@ def create_transaction
     if @transaction.save
         redirect_to pages_user_path
     else
-        puts @transaction.errors.full_messages
         render :new_transaction
     end
     
@@ -31,11 +30,14 @@ end
 
 def sell
     Transaction.sell(current_user, transaction_params)
+    redirect_to pages_user_path
+rescue ActiveRecord::RecordInvalid
+    render :new_transaction
 end
 
 private
 
 def transaction_params
-    params.require(:transaction).permit(:price, :share, :amount, :is_buy?, :stock_name, :amount)
+    params.require(:transaction).permit(:price, :share, :amount, :is_buy, :stock_name, :amount)
 end
 end

@@ -1,0 +1,14 @@
+<%= form_with(model: @transaction, url: buy_path, data: {turbo_frame: "_top"}) do |form| %>
+  <%= form.text_field :price, placeholder: "price", value: @price_data  %>
+  <%= form.text_field :share, placeholder: "share amount" %>
+  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol %>
+  <%= form.hidden_field :is_buy, value: "true"%>
+  <%= form.submit "Buy" %>
+<% end %>
+
+<%= form_with(model: @transaction, url: sell_path, data: {turbo_frame: "_top"}) do |form| %>
+  <%= form.text_field :price, placeholder: "price", value: @price_data %>
+  <%= form.text_field :share, placeholder: "share amount" %>
+  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol %>
+  <%= form.submit "sell" %>
+<% end %>
