@@ -18,7 +18,9 @@
     });
  });
 </script>
-<div class="bg-gray-800 text-slate-200" >
+
+<div class="bg-gray-800 text-slate-200">
+
 <% flash.each do |key, value| %>
   <div class=" alert alert-<%= key %> text-red-500">
     <%= value %>
@@ -48,7 +50,7 @@
 </ul>
 
 
-
+<div class="automatic">
 <div id="all-users" class="tables">
 <table class="w-full text-sm text-left rtl:text-right">
   <thead>
@@ -62,7 +64,7 @@
     </tr>
   </thead>
   
-  <tbody>
+  <tbody >
     <% @users.each do |user| %>
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
@@ -127,4 +129,5 @@
     <% end %>
   </tbody>
   </table>
+  </div>
   </div>
