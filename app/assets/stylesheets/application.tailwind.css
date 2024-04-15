@@ -8,6 +8,11 @@
     margin: 0;
     padding: 0;
   }
+
+  body {
+    overflow-y: hidden;
+  }
+
   .full-size {
     min-width: 100%;
     min-height: 100vh;
@@ -52,5 +57,9 @@
   }
   .cancel-button:hover {
     background-color: #2640fe;
+  }
+
+  .automatic {
+    overflow-y: scroll;
   }
 }
