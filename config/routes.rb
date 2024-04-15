@@ -24,10 +24,9 @@ Rails.application.routes.draw do
 
   post '/dashboard/user', to: 'pages#users'
 
-  get '/transaction/new', to: 'transactions#new_transaction', as: :new_transaction
-
-
+  get '/transaction/buy', to: 'transactions#buy_transaction', as: :buy_transaction
   post '/transaction/buy', to: 'transactions#buy', as: :buy
+  get '/transaction/sell', to: 'transactions#sell_transaction', as: :sell_transaction
   post '/transaction/sell', to: 'transactions#sell', as: :sell
 
 

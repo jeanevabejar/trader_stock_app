@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "modal" do%>
+<div class="modal bg-black">
+<%= render 'buy_form' %>
+<%= link_to "Cancel", pages_user_path, data: {
+        controller: "modals",
+        action: "modals#close"
+      }, class: "cancel-button" %>
+</div>
+
+<% end %>
