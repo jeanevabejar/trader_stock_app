@@ -1,25 +1,25 @@
-<table class="w-full" >
-  <thead>
-    <tr>
-      <th>Stock Name</th>
-      <th>Price</th>
-      <th>Share/Quantity</th>
-      <th>Transaction type</th>
+<table class="w-full border border-gray-700">
+  <thead class="sticky top-0">
+    <tr class="flex flex-row justify-evenly primary-color">
+      <th class="w-1/5 py-2">Stock Name</th>
+      <th class="w-1/5 py-2">Price</th>
+      <th class="w-1/5 py-2">Share/Quantity</th>
+      <th class="w-1/5 py-2">Transaction type</th>
+      <th class="w-1/5 py-2">Transaction time</th>
     </tr>
   </thead>
   <tbody>
     <% @transactions.each do |t| %>
-      <tr class="text-center">
-        <td><%= t.stock_name %></td>
-        <td><%= t.price %></td>
-        <td><%= t.share %></td>
-        
-          <% if t.is_buy == true %>
-         <td class="text-green-700 font-medium">Buy</td>
-          <% else %>
-        <td class="text-red-700 font-medium">Sell</td>
-          <% end %>
-        
+      <tr class="flex justify-evenly border-t border-gray-700 text-center text-[0.9rem]">
+        <td class="w-1/5 py-2"><%= t.stock_name %></td>
+        <td class="w-1/5 py-2">USD <%= t.price %></td>
+        <td class="w-1/5 py-2"><%= t.share %></td>
+        <% if t.is_buy == true %>
+          <td class="w-1/5 py-2 text-green-700 font-medium">Buy</td>
+        <% else %>
+          <td class="w-1/5 py-2 text-red-700 font-medium">Sell</td>
+        <% end %>
+        <td class="w-1/5 py-2"><%= t.created_at.strftime("%a, %b %d, %Y %I:%M %p") %></td>
       </tr>
     <% end %>
   </tbody>

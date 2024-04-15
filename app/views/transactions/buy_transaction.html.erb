@@ -1,10 +1,8 @@
 <%= turbo_frame_tag "modal" do%>
-<div class="modal bg-black">
+<div class="modal primary-color text-white w-[20%] h-[50vh] flex flex-col justify-evenly overflow-hidden">
+    <h1 class="text-blue-700 font-bold">Buy Transaction :<%= @symbol%></h1><br>
 <%= render 'buy_form' %>
-<%= link_to "Cancel", pages_user_path, data: {
-        controller: "modals",
-        action: "modals#close"
-      }, class: "cancel-button" %>
+
 </div>
 
 <% end %>
