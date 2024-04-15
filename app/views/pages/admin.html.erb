@@ -45,7 +45,7 @@
         <a href="#" class="inline-block p-4 rounded-t-lg hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800" data-tab="pending-confirmation">Pending Confirmation</a>
     </li>
      <li class="me-2">
-        <%= link_to "Create new Trader", new_user_path, class: "inline-block p-4 rounded-t-lg hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800" %>
+        <%= link_to "Create new Trader", new_user_path, data: { turbo_frame: "modal"}, class: "inline-block p-4 rounded-t-lg hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800"%>
     </li>
 </ul>
 

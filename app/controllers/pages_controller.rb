@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   before_action :require_user, only: :users
   before_action :set_user, only: [:edit_user, :update_user, :show_user ]
   before_action :search, only: :users
- 
+
 
   def admin
     @users = User.all.order("id")
