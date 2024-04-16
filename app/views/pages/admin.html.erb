@@ -50,7 +50,7 @@
 </ul>
 
 
-<div class="automatic">
+<div class="admin-table">
 <div id="all-users" class="tables">
 <table class="w-full text-sm text-left rtl:text-right">
   <thead>
@@ -63,19 +63,21 @@
       <th scope="col" class="px-6 py-5">Approved for trading</th>
     </tr>
   </thead>
-  
+
+
   <tbody >
     <% @users.each do |user| %>
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get %></td>
-        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
+        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
         <td class="px-6 py-4"><%= user.confirmed? %></td>
         <td class="px-6 py-4"><%= user.is_approved? %></td>
       </tr>
     <% end %>
   </tbody>
+  </div>
 </table>
 </div>
 
