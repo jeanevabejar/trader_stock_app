@@ -7,13 +7,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: #1e222d;
   }
 
   body {
     overflow: auto;
   }
-
 
   .full-size {
     min-width: 100%;
@@ -68,4 +66,8 @@
     border-radius: 5px;
   }
 
+  .primary-bg {
+    background-image: asset-url('background.jpg');
+  }
+  
 }

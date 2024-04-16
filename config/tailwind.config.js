@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: {
+        'primary-bg': "url('../app/assets/images/background.jpg')",
+    },
     },
   },
   plugins: [

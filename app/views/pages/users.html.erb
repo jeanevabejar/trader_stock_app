@@ -4,7 +4,6 @@
   </div>
 <% end %>
 <div class="primary-color text-white full-size overflow-hidden">
-  <% if user_signed_in? %>
     <div class=" flex justify-between">
       <h1 class="font-bold text-4xl">Trader Dashboard</h1>
       <div class="w-[20%] flex flex-row justify-evenly center-item">
@@ -43,5 +42,4 @@
     <div class=" max-h-[30vh] max-w-full overflow-auto scroll">
       <%= render 'pages/user/transaction_list' %>
     </div>
-  <%end%>
 </div>

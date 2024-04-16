@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
 
   get '/profile', to: 'stocks#profile', as: :profile
-  get '/profile/cashin', to: 'stocks#new_cashin', as: :cashin_transaction
-  patch '/profile/cashin', to: 'stocks#cashin', as: :cashin
+  get '/profile/cashin', to: 'stocks#new_deposit', as: :deposit_transaction
+  patch '/profile/cashin', to: 'stocks#deposit', as: :deposit
 
 end
