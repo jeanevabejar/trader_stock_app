@@ -53,6 +53,10 @@
   .cancel-button:hover {
     background-color: #2640fe;
   }
+
+  .primary-color{
+    background-color: #1e222d;
+  }
   
 
 }
