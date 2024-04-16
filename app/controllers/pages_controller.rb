@@ -50,7 +50,6 @@ class PagesController < ApplicationController
 
   def users
     @user = current_user
-    @search_query = search
     @transactions = Transaction.all
   end
 
@@ -61,10 +60,8 @@ class PagesController < ApplicationController
     @data = @clients.ref_data_symbols()
     @search_query = params[:data]
     if @search_query.present?
-      @price_data = @clients.price(@search_query)
       cookies[:data_symbol] = @search_query
-    else
-      @price_data = []
+      redirect_to pages_user_path
     end
   end
 

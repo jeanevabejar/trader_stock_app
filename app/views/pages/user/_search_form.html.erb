@@ -1,12 +1,12 @@
- <%= form_with url: url_for, method: :get, id: "search-form", class: "w-[90%]" do |form| %>
-  <div>
-    <%= form.text_field :data, list: "datalist-options", placeholder: "search", class: "w-[70%] px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" %>
-    <datalist id="datalist-options">
+ <%= form_with url: url_for, method: :get, id: "search-form", class: "w-[70%] border border-gray-600 rounded-md" do |form| %>
+  <div class="flex flex-row justify-evenly">
+    <%= form.text_field :data, list: "datalist-options", placeholder: "search", class: "w-[85%] px-4 py-2 focus:outline-none focus:border-blue-500  bg-transparent rounded-md " %>
+    <datalist id="datalist-options" >
       <% @data.each do |data| %>
         <option value="<%= data.symbol %>"><%= data.name %></option>
       <% end %>
     </datalist>
-    <%= form.submit "Search", id: "search-button" %>
+    <%= form.submit "⌕", class: "text-[1.5rem] w-[15%] center-item" %>
   </div>
   
 <% end %>

@@ -3,91 +3,44 @@
     <%= value %>
   </div>
 <% end %>
-<div class="border border-blue-900 full-size overflow-hidden">
+<div class="primary-color text-white full-size overflow-hidden">
   <% if user_signed_in? %>
-  <div class="border border-black flex justify-between">
-    <h1 class="font-bold text-4xl">Trader Dashboard</h1>
-    <div class="border border-black relative w-[10%] capitalize text-center">
-      <div class="h-[5vh] flex justify-center items-center">
-        
-           <%= @user.email.split("@")[0]%>
-        
-        
+    <div class=" flex justify-between">
+      <h1 class="font-bold text-4xl">Trader Dashboard</h1>
+      <div class=" relative w-[10%] capitalize text-center">
+        <div class="h-[5vh] flex justify-center items-center">
+          <%= @user.email.split("@")[0]%>
+        </div>
+        <div class="border border-black absolute w-full">
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete }, class:"block"%>
+          <%= link_to "Edit", edit_user_registration_path , class:"block",  data: { turbo_frame: "modal"} %>
+        </div>
       </div>
-     
-
-      <div class="border border-black absolute w-full">      
-           <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete }, class:"block"%>
-          <%= link_to "Edit", edit_user_registration_path , class:"block" %>
-      </div>
-     
     </div>
-    
-  </div>
-<div class="border border-blue-600 min-w-[100%] h-[60vh] flex">
-
-  <div class="border border-black w-[25%] h-[60vh] text-[0.8rem] center-item flex-col truncate">
-       <%= render 'pages/user/search_form' %>
-    <table>
-      <tr>
-        <th>Stock Code</th>
-        <th>Company Name</th>
-        <th>Market Price</th>
-      </tr>
-      <%@client.stock_market_list(:mostactive).each do |data|%>
-        <tr>
-          <th><%= data.symbol%></th>
-          <th><%= data.company_name%></th>
-          <th>$<%= data.iex_realtime_price%></th>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-  <div class="border border-black w-[50%]">
-
-<%= render 'pages/user/chart' %>
-
-  </div>
-  <div class="border border-black w-[25%] center-item flex-col" >
-
-
-<%= link_to 'Buy&Sell', new_transaction_path, data: { turbo_frame: "modal"} %>
-<%= cookies[:data_symbol]%>
-
-  </div>
-  
-</div>
-
-<div class=" max-h-[35vh] overflow-auto p-[1rem]">
-  <table class="w-full" >
-  <thead>
-    <tr>
-      <th>Stock Name</th>
-      <th>Price</th>
-      <th>Share/Quantity</th>
-      <th>Transaction type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @transactions.each do |t| %>
-      <tr class="text-center">
-        <td><%= t.stock_name %></td>
-        <td><%= t.price %></td>
-        <td><%= t.share %></td>
+    <div class=" min-w-[100%] h-[65vh] flex">
+      <div class=" w-[25%] h-[65vh] text-[0.8rem] center-item flex-col truncate">
+        <%= render 'pages/user/market_list' %>
+      </div>
+      <div class="h-[65vh] w-[50%]">
+        <%= render 'pages/user/chart' %>
+      </div>
+      <div class="border border-gray-700 w-[25%] center-item flex-col justify-evenly" >
+        <div class="h-[15vh] w-full center-item">
+       <%= render 'pages/user/search_form' %>   
+        </div>
         
-          <% if t.is_buy == true %>
-         <td class="text-green-700 font-medium">Buy</td>
-          <% else %>
-        <td class="text-red-700 font-medium">Sell</td>
-          <% end %>
+        <div class="h-[50vh] w-full center-item justify-evenly flex-col">
+          <div class="w-[50%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase">
+          <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"} %></div>
+        <div class="w-[50%] h-[8vh] rounded-lg bg-red-700 center-item text-[1.5rem] uppercase">
+          <%= link_to 'Sell', sell_transaction_path, data: { turbo_frame: "modal"} %>
+        </div>
+        </div>
         
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-</div>
+      </div>
+    </div>
+    <div class=" max-h-[30vh] max-w-full overflow-auto scroll">
+      <%= render 'pages/user/transaction_list' %>
+    </div>
   <%end%>
-  
-
 </div>
