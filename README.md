@@ -7,7 +7,7 @@ Admin
 - [x] User Story #4: As an Admin, I want to see all the trader that registered in the app so I can track all the traders 
 - [x] User Story #5: As an Admin, I want to have a page for pending trader sign up to easily check if there's a new trader sign up 
 - [x] User Story #6: As an Admin, I want to approve a trader sign up so that he/she can start adding stocks 
-- [ ] User Story #7: As an Admin, I want to see all the transactions so that I can monitor the transaction flow of the app
+- [x] User Story #7: As an Admin, I want to see all the transactions so that I can monitor the transaction flow of the app
 
 Trader
 - [x] User Story #1: As a Trader, I want to create an account to buy and sell stocks

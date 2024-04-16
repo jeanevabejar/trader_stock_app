@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @users = User.all.order("id")
     @to_be_approved = @users.confirmed_users
     @to_be_confirmed = @users.to_confirmed_users
+    @transactions = Transaction.all
   end
 
   def new_user
