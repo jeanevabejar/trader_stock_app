@@ -18,16 +18,6 @@ def sell_transaction
     end 
 end
 
-def new_transaction
-    @transaction = current_user.transactions.new()
-    @clients = clients
-    @symbol = cookies[:data_symbol]
-    if @symbol.present?
-        @price_data = @clients.price(@symbol)
-    end 
-    
-end
-
 
 def buy
     Transaction.buy(current_user, transaction_params)
