@@ -44,9 +44,13 @@
     <li class="me-2">
         <a href="#" class="inline-block p-4 rounded-t-lg hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800" data-tab="pending-confirmation">Pending Confirmation</a>
     </li>
+    <li class="me-2">
+        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800" data-tab="transactions">Transactions</a>
+    </li>
      <li class="me-2">
         <%= link_to "Create new Trader", new_user_path, data: { turbo_frame: "modal"}, class: "inline-block p-4 rounded-t-lg hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800"%>
     </li>
+    
 </ul>
 
 
@@ -132,4 +136,34 @@
   </tbody>
   </table>
   </div>
-  </div>
+
+<div id="transactions" class="tables hidden">
+  <table class="w-full border border-gray-700">
+  <thead class="sticky top-0">
+    <tr class="flex flex-row justify-evenly primary-color">
+      <th class="w-1/5 py-2">Stock Name</th>
+      <th class="w-1/5 py-2">Price</th>
+      <th class="w-1/5 py-2">Share/Quantity</th>
+      <th class="w-1/5 py-2">Transaction type</th>
+      <th class="w-1/5 py-2">Transaction time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |t| %>
+      <tr class="flex justify-evenly border-t border-gray-700 text-center text-[0.9rem]">
+        <td class="w-1/5 py-2"><%= t.stock_name %></td>
+        <td class="w-1/5 py-2">USD <%= t.price %></td>
+        <td class="w-1/5 py-2"><%= t.share %></td>
+        <% if t.is_buy == true %>
+          <td class="w-1/5 py-2 text-green-700 font-medium">Buy</td>
+        <% else %>
+          <td class="w-1/5 py-2 text-red-700 font-medium">Sell</td>
+        <% end %>
+        <td class="w-1/5 py-2"><%= t.created_at.strftime("%a, %b %d, %Y %I:%M %p") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+</div>
