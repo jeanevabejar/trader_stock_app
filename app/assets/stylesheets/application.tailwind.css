@@ -10,8 +10,9 @@
   }
 
   body {
-    overflow-y: hidden;
+    overflow: auto;
   }
+
 
   .full-size {
     min-width: 100%;
@@ -57,7 +58,5 @@
     background-color: #2640fe;
   }
   
-  .automatic {
-    overflow-y: scroll;
-  }
+
 }
