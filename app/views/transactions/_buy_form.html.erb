@@ -1,6 +1,6 @@
 <%= form_with(model: @transaction, url: buy_path, data: {turbo_frame: "_top"}, class: "h-[40vh] flex flex-col justify-between") do |form| %>
 <div class="bg-white flex flex-row rounded-md">
-   <%= form.text_field :price, placeholder: "price", class: "text-black rounded-md w-[60%] border-none" %> <span class="text-green-700 center-item truncate">USD<%=@price_data%></span>
+   <%= form.text_field :price, placeholder: "price", class: "text-black rounded-md w-[60%] border-none" %> <span class="text-green-700 center-item truncate">USD<%= @price_data %></span>
 </div>
  
   <%= form.text_field :share, placeholder: "share amount", class: "text-black rounded-md" %>

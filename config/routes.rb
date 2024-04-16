@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   post '/transaction/sell', to: 'transactions#sell', as: :sell
 
 
+  get '/profile', to: 'stocks#profile', as: :profile
+  get '/profile/cashin', to: 'stocks#new_cashin', as: :cashin_transaction
+  patch '/profile/cashin', to: 'stocks#cashin', as: :cashin
+
 end
