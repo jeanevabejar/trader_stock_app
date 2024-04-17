@@ -1,45 +1,61 @@
 <% flash.each do |key, value| %>
-  <div class=" alert alert-<%= key %> text-red-500 absolute border border-black inset-0 flex justify-center">
+  <div class=" alert alert-<%= key %> text-red-500 absolute   bg-white inset-0 flex justify-center">
     <%= value %>
   </div>
 <% end %>
 <div class="primary-color text-white full-size overflow-hidden">
-    <div class=" flex justify-between">
-      <h1 class="font-bold text-4xl">Trader Dashboard</h1>
-      <div class="w-[20%] flex flex-row justify-evenly center-item">
-        <%= link_to 'Dashboard', pages_user_path, class: "w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(pages_user_path)}" %>
-        <%= link_to 'Profile', profile_path, class:"w-[50%] hover:text-blue-500 center-item" %>
-        <div class=" relative w-[50%] capitalize text-center hover:text-blue-500">
+  <div class=" flex justify-between">
+    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TraderMaster</h1>
+    <div class="w-[20%] flex flex-row justify-evenly center-item">
+      <%= link_to 'Dashboard', pages_user_path, class: "w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(pages_user_path)}" %>
+      <%= link_to 'Profile', profile_path, class:"w-[50%] hover:text-blue-500 center-item" %>
+      <div class=" relative w-[50%] capitalize text-center hover:text-blue-500">
         <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete }, class:"block"%>
       </div>
-      </div>
     </div>
-    <div class=" min-w-[100%] h-[65vh] flex">
-      <div class=" w-[25%] h-[65vh] text-[0.8rem] center-item flex-col truncate">
-        <%= render 'pages/user/market_list' %>
+  </div>
+  <div class="w-full h-[5vh]">
+    <%= render 'pages/user/ticker' %>
+  </div>
+  <div class=" min-w-[100%] h-[70vh] flex flex-row">
+    <div class=" w-[25%] h-[70vh] text-[0.8rem] center-item flex-col truncate">
+      <%= render 'pages/user/market_list' %>
+    </div>
+    <div class="h-[70vh] w-[50%]">
+      <%= render 'pages/user/chart' %>
+    </div>
+    <div class="border border-gray-700 w-[25%] h-[70vh] center-item flex-col justify-evenly" >
+      <div class="h-[15vh] w-full center-item">
+        <%= render 'pages/user/search_form' %>
       </div>
-      <div class="h-[65vh] w-[50%]">
-        <%= render 'pages/user/chart' %>
-      </div>
-      <div class="border border-gray-700 w-[25%] center-item flex-col justify-evenly" >
-        <div class="h-[15vh] w-full center-item">
-          <%= render 'pages/user/search_form' %>
+      <div class="h-[50vh] w-full center-item justify-evenly flex-col">
+      
+        <% if current_user.is_approved == true && @stock_list.include?(@symbol) == true %>
+          <div>
+          <h1>Stock Name: <%= @stocks.stock_symbol%></h1>
+          <h1>Remaining Shares: <%= @stocks.total_share%></h1>
+          <h1>Current Price: <%= @price_data%></h1>
         </div>
-        <div class="h-[50vh] w-full center-item justify-evenly flex-col">
-          <% if current_user.is_approved == true %>
-            <div class="w-[50%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase">
-              <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %></div>
-            <div class="w-[50%] h-[8vh] rounded-lg bg-red-700 center-item text-[1.5rem] uppercase">
-              <%= link_to 'Sell', sell_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %>
-            </div>
-          <% else %>
-            <h1 class="text-center text-blue-500 font-bold text-[1.5rem]">"To transact, <br>
-              kindly authenticate your account first."</h1>
-          <% end %>
-        </div>
+          <div class="w-[50%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase">
+            <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %></div>
+          <div class="w-[50%] h-[8vh] rounded-lg bg-red-700 center-item text-[1.5rem] uppercase">
+            <%= link_to 'Sell', sell_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %>
+          </div>
+          <% elsif current_user.is_approved == true  && @stock_list.include?(@symbol) == false%>
+          <div>
+            <h1>Stock Name: <%=@symbol%></h1>
+            <h1>Current Price:<%=@price_data%></h1>
+          </div>
+          <div class="w-[50%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase">
+            <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %></div>
+        <% else %>
+          <h1 class="text-center text-blue-500 font-bold text-[1.5rem]">"To transact, <br>
+            kindly authenticate your account first."</h1>
+        <% end %>
       </div>
     </div>
-    <div class=" max-h-[30vh] max-w-full overflow-auto scroll">
-      <%= render 'pages/user/transaction_list' %>
-    </div>
+  </div>
+  <div class=" max-h-[20vh] max-w-full overflow-auto scroll">
+    <%= render 'pages/user/transaction_list' %>
+  </div>
 </div>

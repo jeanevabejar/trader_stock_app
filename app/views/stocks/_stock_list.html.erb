@@ -20,7 +20,7 @@
             <td><%= s.total_share %></td>
             <% average = @transactions.where(stock_name: s.stock_symbol).average(:price)%>
             <td><%= number_to_currency(average, precision: 2) %> per share</td>
-            <% total_cost =  @transactions.where(stock_name: s.stock_symbol).sum { |transaction| transaction.price * transaction.share } %>
+            <%total_cost = @transactions.where(stock_name: s.stock_symbol).map { |transaction| transaction.price * transaction.share }.sum%>
             <td><%= number_to_currency(total_cost, precision: 2) %></td>
             <% current_value = s.total_share * @clients.price(s.stock_symbol)%>
             <td><%= number_to_currency(current_value, precision: 2) %></td>

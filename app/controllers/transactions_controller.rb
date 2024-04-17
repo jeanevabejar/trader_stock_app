@@ -23,14 +23,14 @@ def buy
     Transaction.buy(current_user, transaction_params)
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    render :new_transaction
+    render :buy_transaction
 end
 
 def sell
     Transaction.sell(current_user, transaction_params)
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    render :new_transaction
+    render :sell_transaction
 end
 
 private
