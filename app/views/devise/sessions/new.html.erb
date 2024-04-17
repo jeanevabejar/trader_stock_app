@@ -1,44 +1,38 @@
 <div class="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
-   <img class="h-auto max-w-full" src="<%= image_path('background.jpg') %>" alt="background image">
+  <img class="full-size" src="<%= image_path('background.jpg') %>" alt="background image">
 </div>
-
-<div class="h-auto w-1/3 text-white fixed -translate-x-2/4 -translate-y-2/4 bg-[rgba(0,0,0,0.797)] shadow-[0_0_10px_0_rgba(0,0,0,0.2),0_5px_10px_0_rgba(0,0,0,0.19)] p-[2em] rounded-[5px] left-2/4 top-2/4">
- 
- 
- <span class="flex justify-center mb-5">Admin Sign In</span>
- <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> text-red-500">
-      <%= value %>
-    </div>
- <% end %>
- <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "max-w-sm mx-auto" }) do |f| %>
-    <div class="mb-5">
-      <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-    </div>
-
-    <div class="mb-5">
-      <%= f.label :password, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
-      <div class="flex items-start mb-5">
-        <div class="flex items-center h-5">
-          <%= f.check_box :remember_me, class: "w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" %>
-        </div>
-        <%= f.label :remember_me, class: "ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 mr-20" %>
-         <%= render "admins/shared/links" %>
+<div class="full-size center-item text-white relative" >
+  <span class="absolute left-16 top-16 flex flex-row justify-center items-center text-3xl pt-5"><img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"><%= link_to 'TraderMaster', root_path %></span>
+  <div class="h-auto w-1/3 text-white fixed -translate-x-2/4 -translate-y-2/4 bg-[rgba(0,0,0,0.797)] shadow-[0_0_10px_0_rgba(0,0,0,0.2),0_5px_10px_0_rgba(0,0,0,0.19)] p-[2em] rounded-[5px] left-2/4 top-2/4">
+    <span class="flex justify-center mb-5">Admin Sign In</span>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %> text-red-500">
+        <%= value %>
       </div>
     <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in", class: "text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" %>
-    </div>
- <% end %>
-
-
-
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "max-w-sm mx-auto" }) do |f| %>
+      <div class="mb-5">
+        <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white text-white" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      </div>
+      <div class="mb-5">
+        <%= f.label :password, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white text-white" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-start mb-5">
+          <div class="flex items-center h-5">
+            <%= f.check_box :remember_me, class: "w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" %>
+          </div>
+          <%= f.label :remember_me, class: "ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 mr-20 text-white" %>
+          <%= render "admins/shared/links" %>
+        </div>
+      <% end %>
+      <div class="actions">
+        <%= f.submit "Log in", class: "text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center" %>
+      </div>
+    <% end %>
   </div>
+</div>
 </div>
 </div>

@@ -1,9 +1,10 @@
 <% flash.each do |key, value| %>
-  <div class=" alert alert-<%= key %> text-red-500 absolute   bg-white inset-0 flex justify-center">
+  <div class=" alert alert-<%= key %> text-red-500 absolute w-[30%] h-[10vh]  primary-color rounded-md inset-0 flex justify-center">
     <%= value %>
   </div>
 <% end %>
 <div class="primary-color text-white full-size overflow-hidden">
+ <!-- #navbar -->
   <div class=" flex justify-between">
     <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TraderMaster</h1>
     <div class="w-[20%] flex flex-row justify-evenly center-item">
@@ -14,16 +15,28 @@
       </div>
     </div>
   </div>
+ <!-- #ticker -->
   <div class="w-full h-[5vh]">
     <%= render 'pages/user/ticker' %>
   </div>
-  <div class=" min-w-[100%] h-[70vh] flex flex-row">
+ 
+ <!-- #middle container -->
+  <div class=" min-w-full max-w-full h-[70vh] flex flex-row">
+ 
+ <!-- #marketlist container -->
     <div class=" w-[25%] h-[70vh] text-[0.8rem] center-item flex-col truncate">
       <%= render 'pages/user/market_list' %>
     </div>
+
+ <!-- #chart container -->
     <div class="h-[70vh] w-[50%]">
-      <%= render 'pages/user/chart' %>
+      <div class="h-[70vh] w-full center-item">
+        <%= render 'pages/user/chart' %>
+      </div>
+      
     </div>
+
+    <!-- #transaction container -->
     <div class="border border-gray-700 w-[25%] h-[70vh] center-item flex-col justify-evenly" >
       <div class="h-[15vh] w-full center-item">
         <%= render 'pages/user/search_form' %>
@@ -52,9 +65,12 @@
           <h1 class="text-center text-blue-500 font-bold text-[1.5rem]">"To transact, <br>
             kindly authenticate your account first."</h1>
         <% end %>
+
       </div>
     </div>
   </div>
+
+    <!-- #transactionlist container -->
   <div class=" max-h-[20vh] max-w-full overflow-auto scroll">
     <%= render 'pages/user/transaction_list' %>
   </div>
