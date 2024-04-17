@@ -1,12 +1,12 @@
 <table class="w-full border text-center">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Total Share</th>
-      <th>Average Price</th>
-      <th>Transaction Cost</th>
-      <th>Current Value</th>
-      <th>Profit/Loss</th>
+      <th class="border">Name</th>
+      <th class="border">Total Share</th>
+      <th class="border">Average Price</th>
+      <th class="border">Transaction Cost</th>
+      <th class="border">Current Value</th>
+      <th class="border">Profit/Loss</th>
     </tr>
   </thead>
   <% if @stocks.empty? || @transactions.empty? %>
@@ -15,23 +15,21 @@
     <% @stocks.each do |s| %>
       <tbody>
         <tr>
-          <% unless s.total_share == 0 %>
             <td><%= s.stock_symbol %></td>
             <td><%= s.total_share %></td>
             <% average = @transactions.where(stock_name: s.stock_symbol).average(:price)%>
             <td><%= number_to_currency(average, precision: 2) %> per share</td>
-            <%total_cost = @transactions.where(stock_name: s.stock_symbol).map { |transaction| transaction.price * transaction.share }.sum%>
+            <% total_cost = average * s.total_share%>
             <td><%= number_to_currency(total_cost, precision: 2) %></td>
             <% current_value = s.total_share * @clients.price(s.stock_symbol)%>
             <td><%= number_to_currency(current_value, precision: 2) %></td>
-            <% if current_value > total_cost %>
+            <% if current_value > total_cost.to_f %>
               <td class="text-green-600">Profit↑</td>
             <% else %>
               <td class="text-red-600">Loss↓</td>
             <% end %>
-          <% else %>
-            <td></td>
-          <% end %>
+          
+            
         </tr>
       </tbody>
     <% end %>

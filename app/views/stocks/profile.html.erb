@@ -1,4 +1,7 @@
-<div class=" w-full h-screen flex flex-col gap-[5rem] items-center overflow-auto scroll primary-color">
+<div class="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
+   <img class="full-size blur-md" src="<%= image_path('background.jpg') %>" alt="background image">
+</div>
+<div class=" w-full h-screen flex flex-col gap-[5rem] items-center overflow-auto scroll">
   <div class=" border border-gray-700 flex justify-between w-full text-white fixed z-10 primary-color">
     <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TraderMaster</h1>
     <div class="w-[20%] flex flex-row justify-evenly center-item">
@@ -9,8 +12,8 @@
       </div>
     </div>
   </div>
-  <div class=" max-w-[90%] min-w-[90%] text-white flex flex-col gap-[4rem] mt-[5rem]">
-    <div class="w-full h-[50vh] border border-gray-700 center-item flex-row primary-color">
+  <div class=" max-w-[90%] min-w-[90%] text-white flex flex-col gap-[4rem] mt-[5rem] ">
+    <div class="w-full h-[50vh] border border-gray-700 center-item flex-row primary-color rounded-lg">
       <div class=" w-[30%] h-[50vh] center-item">
         <%= image_tag 'trader-img', class: "rounded-full w-[70%] h-[40vh]"%>
       </div>
@@ -24,12 +27,12 @@
         </div>
       </div>
     </div>
-    <div class="w-full h-[100vh] border border-gray-700 p-5 overflow-auto scroll flex flex-col gap-[1rem] primary-color">
+    <div class="w-full h-[100vh] border border-gray-700 p-5 overflow-auto scroll flex flex-col gap-[1rem] primary-color rounded-lg">
       <h1 class="text-[1.5rem] font-semibold uppercase">Stocks Portfolio</h1>
 
       <%= render 'stocks/stock_list' %>
     </div>
-    <div class="w-full h-[50vh] border border-gray-700 overflow-auto scroll p-5 flex flex-col gap-[1rem] mb-[5rem] primary-color">
+    <div class="w-full h-[50vh] border border-gray-700 overflow-auto scroll p-5 flex flex-col gap-[1rem] mb-[5rem] primary-color rounded-lg">
       <h1 class="text-[1.5rem] font-semibold uppercase">Transaction History</h1>
       <%= render 'stocks/transaction_history' %>
     </div>

@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "modal" do%>
-<div class="modal">
+<div class="modal  bg-white bg-opacity-25 backdrop-filter backdrop-blur-lg p-8 rounded-2xl shadow-lg text-white center-item flex-col h-[60vh] gap-[1rem] rounded-xl" >
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: {turbo_frame: "_top"}) do |f| %>
@@ -7,7 +7,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"text-black" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -16,7 +16,7 @@
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"text-black" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
@@ -25,27 +25,30 @@
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"text-black" %>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class:"text-black" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+   <div class="actions py-4 ">
+    <%= f.submit "Update", class: "h-[5vh] w-[30%] border border-blue-700 rounded-md hover:bg-blue-700 hover:border-none"  %>
+    
+  <div class="p-2">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "hover:italic hover:underline" %></div>
   </div>
+
+
+ 
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Cancel", pages_user_path, data: {
+<%= link_to "Cancel", profile_path, data: {
         controller: "modals",
         action: "modals#close"
-      }, class: "cancel-button" %>
+      }, class: "bg-blue-700 h-[5vh] w-[30%] rounded-md center-item" %>
 
 </div>
+
 <% end %>

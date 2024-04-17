@@ -2,7 +2,7 @@ class StocksController < ApplicationController
     
   def profile
     @stocks = current_user.stocks.order(total_share: :desc )
-    @transactions = current_user.transactions.all
+    @transactions = current_user.transactions.order(created_at: :desc )
     @clients = clients
   
   end

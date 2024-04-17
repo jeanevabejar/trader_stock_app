@@ -51,11 +51,10 @@ class PagesController < ApplicationController
 
   def users
     @user = current_user
-    @transactions = Transaction.all
+    @transactions = Transaction.order(created_at: :desc )
     @stock_list = current_user.stocks.pluck(:stock_symbol).join(",")
-    
+     @symbol = cookies[:data_symbol]
     if @symbol.present?
-    @symbol = cookies[:data_symbol]
     @price_data = @clients.price(@symbol)
     @stocks = current_user.stocks.find_by(stock_symbol: @symbol)
     end
