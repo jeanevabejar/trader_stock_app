@@ -67,11 +67,11 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+  gem "nyan-cat-formatter"
+  gem 'shoulda-matchers', '~> 6.0'
 end
 
 gem "devise", "~> 4.9"
 
 gem 'iex-ruby-client'
-
-
-

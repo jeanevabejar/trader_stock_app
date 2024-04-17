@@ -19,10 +19,29 @@ Trader
 - [ ] User Story #7: As a Trader, I want to have a Transaction page to see and monitor all the transactions made by buying and selling stocks
 - [ ] User Story #8: As a Trader, I want to sell my stocks to gain money.
 
-gems added
+gems added:
 
 gem "devise", "~> 4.9"
 
 gem 'iex-ruby-client'
 
 gem "tailwindcss-rails"
+
+gems added for testing:
+
+bun = 'bundle install'
+=>  = 'then'
+
+gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+    bun => rails generate rspec:install
+
+gem "nyan-cat-formatter"
+    bun => gem install nyan-cat-formatter
+
+gem 'shoulda-matchers', '~> 6.0'
+    bun
+    shoulda matchers in rails_helper.rb(line 66-71)
+
+additional rspec vscode extension:
+
+vscode-run-rspec-file
