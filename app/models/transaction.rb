@@ -26,7 +26,11 @@ class Transaction < ApplicationRecord
 
       stock = current_user.stocks.find_or_initialize_by(stock_symbol: transaction_params[:stock_name])
       stock.total_share -= transaction_params[:share].to_i
-      stock.save!
+      if stock.total_share <= 0
+        stock.destroy
+      else
+        stock.save!
+      end
     end
   end
 end

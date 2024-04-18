@@ -1,11 +1,12 @@
 <table class="w-full border text-center">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Share</th>
-            <th>Price</th>
-            <th>Type</th>
-            <th>Amount</th>
+            <th class="border ">Name</th>
+            <th class="border ">Share</th>
+            <th class="border ">Price</th>
+            <th class="border ">Type</th>
+            <th class="border ">Amount</th>
+            <th class="border ">Time</th>
           </tr>
         </thead>
         <% if @transactions.empty? %>
@@ -14,15 +15,16 @@
           <% @transactions.each do |t| %>
             <tbody>
               <tr>
-                <td><%= t.stock_name %></td>
-                <td><%= t.price %></td>
-                <td><%= t.share %></td>
+                <td class="border border-gray-700 "><%= t.stock_name %></td>
+                <td class="border border-gray-700 "><%= t.price %></td>
+                <td class="border border-gray-700 "><%= t.share %></td>
                 <% if t.is_buy == true %>
-                  <td class="text-green-700">Buy</td>
+                  <td class="border border-gray-700 text-green-700">Buy</td>
                 <% else %>
-                  <td class="text-red-700">Sell</td>
+                  <td class="border border-gray-700 text-red-700">Sell</td>
                 <% end %>
-                <td><%= number_to_currency(t.share * t.price, precision: 2) %></td>
+                <td class="border border-gray-700 "><%= number_to_currency(t.share * t.price, precision: 2) %></td>
+                 <td class="border border-gray-700 w-1/5 py-2"><%= t.created_at.strftime("%a, %b %d, %Y %I:%M %p") %></td>
               </tr>
             </tbody>
           <% end %>
