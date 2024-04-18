@@ -22,7 +22,7 @@ class PagesController < ApplicationController
     if user_service.create(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully created.'
     else
-      render :new
+      redirect_to pages_admin_path, notice: 'Failed to create Trader.'
     end
   end
 
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
     if user_service.update(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
-      render :edit_user, notice: 'Error updating User.'
+      redirect_to pages_admin_path, notice: 'Error updating User.'
     end
   end
 
@@ -92,7 +92,7 @@ class PagesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :is_approved)
- end
+  end
 
   def no_turning_back
     if admin_signed_in?
