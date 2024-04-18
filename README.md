@@ -49,4 +49,6 @@ gem 'factory_bot_rails'
 
 additional rspec vscode extension:<br>
 
-vscode-run-rspec-file
+vscode-run-rspec-file<br>
+click Gear Icon<br>
+click Extension Keyboard Shortcuts<br>
