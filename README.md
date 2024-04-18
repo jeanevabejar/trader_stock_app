@@ -29,19 +29,24 @@ gem "tailwindcss-rails"
 
 gems added for testing:
 
-bun = 'bundle install'
-=>  = 'then'
+bun = 'bundle install' <br>
 
-gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
-    bun => rails generate rspec:install
+gem 'rspec-rails', '~> 6.1', '>= 6.1.1'<br>
+    bun<br>
+    rails generate rspec:install
 
-gem "nyan-cat-formatter"
-    bun => gem install nyan-cat-formatter
+gem "nyan-cat-formatter"<br>
+    bun<br>
+    gem install nyan-cat-formatter
 
-gem 'shoulda-matchers', '~> 6.0'
-    bun
-    shoulda matchers in rails_helper.rb(line 66-71)
+gem 'shoulda-matchers', '~> 6.0'<br>
+    bun<br>
+    shoulda matchers in rails_helper.rb
 
-additional rspec vscode extension:
+gem 'factory_bot_rails'
+    bun<br>
+    config.include FactoryBot::Syntax::Methods in rails_helper.rb
+
+additional rspec vscode extension:<br>
 
 vscode-run-rspec-file
