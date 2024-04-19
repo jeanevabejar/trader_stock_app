@@ -102,8 +102,8 @@
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get %></td>
-        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
+        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
         <td class="px-6 py-4"><%= user.is_approved? %></td>
       </tr>
     <% end %>
@@ -128,8 +128,8 @@
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get %></td>
-        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get %></td>
+        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
+        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
         <td class="px-6 py-4"><%= user.is_approved? %></td>
       </tr>
     <% end %>

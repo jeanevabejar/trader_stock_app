@@ -70,6 +70,7 @@ group :test do
   gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
   gem "nyan-cat-formatter"
   gem 'shoulda-matchers', '~> 6.0'
+  gem 'factory_bot_rails'
 end
 
 gem "devise", "~> 4.9"
