@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  scope :confirmed_users, -> { where.not(confirmed_at: nil).where(is_approved: false) } #to be approved
-  scope :to_confirmed_users, -> { where(confirmed_at: nil) } #to be confirmed
+  scope :confirmed_users, -> { where.not(confirmed_at: nil).where(is_approved: false) }
+  scope :to_confirmed_users, -> { where(confirmed_at: nil) }
+  scope :active_users, -> { where.not(confirmed_at: nil).where(is_approved: true) }
 
   validates :balance, numericality: { greater_than_or_equal_to: 0 }
 
