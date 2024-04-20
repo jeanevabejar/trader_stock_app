@@ -28,7 +28,7 @@ RSpec.describe "Admin", type: :system do
 
     it "updates trader's email" do
       create_trader
-      click_on "Edit"
+      find('i.fa-solid.fa-pencil').click
       fill_in "Email", with: "updated-#{new_trader.email}"
       click_on "Update User"
       expect(page).to have_content("updated-#{new_trader.email}")
@@ -36,7 +36,7 @@ RSpec.describe "Admin", type: :system do
 
     it "inspect's trader's credentials" do
       create_trader
-      click_on "Inspect"
+      find('i.fa-regular.fa-eye').click
       expect(page).to have_content(new_trader.email)
     end
 
@@ -71,7 +71,7 @@ RSpec.describe "Admin", type: :system do
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password
     click_on "Log in"
-    expect(page).to have_content("Admin Dashboard")
+    expect(page).to have_content("Dashboard")
   end
 
   def create_trader
