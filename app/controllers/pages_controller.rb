@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @users = User.all.order("id")
     @to_be_approved = @users.confirmed_users
     @to_be_confirmed = @users.to_confirmed_users
+    @active_traders = @users.active_users
     @transactions = Transaction.all
   end
 

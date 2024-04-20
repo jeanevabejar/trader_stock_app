@@ -26,15 +26,31 @@
     <%= value %>
   </div>
 <% end %>
-<div>
-  <h1 class="font-bold text-4xl">Admin Dashboard</h1>
+<div class="p-3 mt-2">
+  <h1 class="font-sans font-medium text-4xl">Dashboard</h1>
+  <h1 class="font-sans font-thin text-xl">Admin</h1>
+</div>
+<div class="absolute right-0 w-1/2 top-14 mr-0 flex flex-row">
+  <div class="relative flex items-start mr-20">
+  <span class="font-thin mr-2">All users</span><span  class="text-xl text-orange-400"><%= @users.count %></span>
+  </div>
+  <div class="realtive flex items-start mr-20">
+  <span class="font-thin mr-2">Active</span><span  class="text-xl text-green-400"><%= @active_traders.count %></span>
+  </div>
+  <div class="relative flex items-start mr-20">
+  <span class="font-thin mr-2">Unapproved</span><span  class="text-xl text-blue-400"><%= @to_be_approved.count %></span>
+  </div>
+  <div class="relative flex items-start mr-20">
+  <span class="font-thin mr-2">Uncomfirmed</span><span  class="text-xl text-red-400"><%= @to_be_confirmed.count %></span>
+  </div>
+  
 </div>
 <span class="absolute right-3 top-3">
-<%= link_to "Sign out", destroy_admin_session_path, method: :delete, data: {  turbo_method: :delete } %>
+<%= link_to destroy_admin_session_path, method: :delete, data: {  turbo_method: :delete } do %><i class="fa-solid fa-arrow-right-from-bracket text-transparent hover:text-white"></i><% end %>
 </span>
 
 
-<ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 mt-20">
+<ul class="sticky top-0 flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 mt-4 bg-[#1e222d]">
     <li class="me-2">
         <a href="#" aria-current="page" class="inline-block p-4 rounded-t-lg  hover:text-blue-600 hover:bg-gray-700  focus:text-blue-600 focus:bg-gray-800" data-tab="all-users">All Users</a>
     </li> 
@@ -74,10 +90,10 @@
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
-        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
-        <td class="px-6 py-4"><% if user.confirmed? %><span class="text-green-600 pl-10">Yes</span><% else %><span class="text-red-600 pl-10">No</span><% end %></td>
-        <td class="px-6 py-4"><% if user.is_approved? %><span class="text-green-600 pl-10">Yes</span><% else %><span class="text-red-600 pl-10">No</span><% end %></td>
+        <td class="px-6 py-4"><%= link_to edit_user_path(user), method: :get, data: { turbo_frame: "modal"}, class:"pl-6" do %><i class="fa-solid fa-pencil"></i><% end %></td>
+        <td class="px-6 py-4"><%= link_to show_user_path(user), method: :get, data: { turbo_frame: "modal"}, class:"pl-10" do %><i class="fa-regular fa-eye"></i><% end %></td>
+        <td class="px-6 py-4"><% if user.confirmed? %><span class="text-green-600 pl-10"><i class="fa-solid fa-check"></i></span><% else %><span class="text-red-600 pl-10"><i class="fa-solid fa-x"></i></span><% end %></td>
+        <td class="px-6 py-4"><% if user.is_approved? %><span class="text-green-600 pl-12"><i class="fa-solid fa-check"></i></span><% else %><span class="text-red-600 pl-12"><i class="fa-solid fa-x"></i></span><% end %></td>
       </tr>
     <% end %>
   </tbody>
@@ -102,9 +118,9 @@
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
-        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
-        <td class="px-6 py-4"><% if user.is_approved? %><span class="text-green-600 pl-10">Yes</span><% else %><span class="text-red-600 pl-10">No</span><% end %></td>
+        <td class="px-6 py-4"><%= link_to edit_user_path(user), method: :get, data: { turbo_frame: "modal"}, class:"pl-6" do %><i class="fa-solid fa-pencil"></i><% end %></td>
+        <td class="px-6 py-4"><%= link_to show_user_path(user), method: :get, data: { turbo_frame: "modal"}, class:"pl-10" do %><i class="fa-regular fa-eye"></i><% end %></td>
+        <td class="px-6 py-4"><% if user.is_approved? %><span class="text-green-600 pl-10"><i class="fa-solid fa-check"></i></span><% else %><span class="text-red-600 pl-10"><i class="fa-solid fa-check"></i></span><% end %></td>
       </tr>
     <% end %>
   </tbody>
@@ -128,9 +144,9 @@
       <tr>
         <td class="px-6 py-4"><%= user.id %></td>
         <td class="px-6 py-4"><%= user.email %></td> 
-        <td class="px-6 py-4"><%= link_to 'Edit', edit_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
-        <td class="px-6 py-4"><%= link_to 'Inspect', show_user_path(user), method: :get, data: { turbo_frame: "modal"} %></td>
-        <td class="px-6 py-4"><% if user.confirmed? %><span class="text-green-600 pl-10">Yes</span><% else %><span class="text-red-600 pl-10">No</span><% end %></td>
+        <td class="px-6 py-4"><%= link_to edit_user_path(user), method: :get, data: { turbo_frame: "modal"}, class:"pl-6" do %><i class="fa-solid fa-pencil"></i><% end %></td>
+        <td class="px-6 py-4"><%= link_to show_user_path(user), method: :get, data: { turbo_frame: "modal"}, class:"pl-10" do %><i class="fa-regular fa-eye"></i><% end %></td>
+        <td class="px-6 py-4"><% if user.confirmed? %><span class="text-green-600 pl-10"><i class="fa-solid fa-check"></i></span><% else %><span class="text-red-600 pl-10"><i class="fa-solid fa-check"></i></span><% end %></td>
       </tr>
     <% end %>
   </tbody>
