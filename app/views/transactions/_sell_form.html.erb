@@ -1,4 +1,5 @@
-<%= form_with(model: @transaction, url: sell_path, data: {turbo_frame: "_top"}, class: "h-[40vh] flex flex-col justify-between") do |form| %>
+<%= form_with(model: @transaction, url: sell_path, data: {turbo_frame: "_top"}, class: "h-[45vh] flex flex-col justify-between") do |form| %>
+  <h1 class="text-center">Remaining Share : <%= @stocks.total_share%></h1>
 <div class="bg-white flex flex-row rounded-md">
    <%= form.text_field :price, placeholder: "price", class: "text-black rounded-md w-[60%] border-none" %> <span class="text-green-700 center-item truncate">USD<%= number_to_currency(@price_data, precision: 2) %></span>
 </div>

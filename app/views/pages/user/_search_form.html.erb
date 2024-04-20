@@ -1,12 +1,40 @@
- <%= form_with url: url_for, method: :get, id: "search-form", class: "w-[70%] border border-gray-600 rounded-md" do |form| %>
+<%= form_with url: url_for, method: :get, id: "search-form", class: "w-[70%] border border-gray-600 rounded-md", data: { autocomplete: "off" } do |form| %>
   <div class="flex flex-row justify-evenly">
-    <%= form.text_field :data, list: "datalist-options", placeholder: "search", class: "w-[85%] px-4 py-2 focus:outline-none focus:border-blue-500  bg-transparent rounded-md " %>
-    <datalist id="datalist-options" >
+    <%= form.text_field :data, list: "datalist-options", placeholder: "search", class: "w-[85%] px-4 py-2 focus:outline-none focus:border-blue-500 bg-transparent rounded-md", id: "search-input" %>
+    <datalist id="datalist-options">
       <% @data.each do |data| %>
         <option value="<%= data.symbol %>"><%= data.name %></option>
       <% end %>
     </datalist>
-    <%= form.submit "⌕", class: "text-[1.5rem] w-[15%] center-item cursor-pointer" %>
+    <%= form.hidden_field :selected_data, id: "selected-data" %>
+    <%= form.submit "⌕", class: "text-[1.5rem] w-[15%] center-item cursor-pointer", id: "submit-button" %>
   </div>
-  
 <% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const searchForm = document.getElementById("search-form");
+    const searchInput = document.getElementById("search-input");
+    const selectedDataInput = document.getElementById("selected-data");
+    const errorMessage = document.getElementById("error-message");
+
+    searchForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const selectedOption = document.querySelector(`#datalist-options option[value='${searchInput.value}']`);
+
+      if (selectedOption) {
+        selectedDataInput.value = selectedOption.value;
+        searchForm.submit();
+      } else {
+        
+        errorMessage.classList.remove("hidden");
+      }
+    });
+
+    
+    searchInput.addEventListener("input", function() {
+      errorMessage.classList.add("hidden");
+    });
+  });
+</script>

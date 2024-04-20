@@ -16,8 +16,8 @@
             <tbody>
               <tr>
                 <td class="border border-gray-700 "><%= t.stock_name %></td>
-                <td class="border border-gray-700 "><%= t.price %></td>
                 <td class="border border-gray-700 "><%= t.share %></td>
+                <td class="border border-gray-700 "><%=  number_to_currency(t.price, precision: 2) %></td>
                 <% if t.is_buy == true %>
                   <td class="border border-gray-700 text-green-700">Buy</td>
                 <% else %>
