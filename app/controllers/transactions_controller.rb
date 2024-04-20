@@ -7,30 +7,36 @@ def buy_transaction
     if @symbol.present?
         @price_data = @clients.price(@symbol)
     end   
+
 end
 
 def sell_transaction
     @transaction = current_user.transactions.new()
     @clients = clients
+    @stock_list = current_user.stocks.pluck(:stock_symbol).join(",")
     @symbol = cookies[:data_symbol]
     if @symbol.present?
         @price_data = @clients.price(@symbol)
+        @stocks = current_user.stocks.find_by(stock_symbol: @symbol)
     end 
 end
 
 
 def buy
-    Transaction.buy(current_user, transaction_params)
-    redirect_to pages_user_path
-rescue ActiveRecord::RecordInvalid
-    render :buy_transaction
+    if Transaction.buy(current_user, transaction_params).save
+      redirect_to pages_user_path, notice: "Success buying"
+    else
+        flash[:notice] = "Error in buying"
+      redirect_to pages_user_path  
+    end
 end
+  
 
 def sell
     Transaction.sell(current_user, transaction_params)
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    render :sell_transaction
+    redirect_to pages_user_path, notice: "error in selling"
 end
 
 private

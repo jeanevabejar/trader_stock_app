@@ -54,11 +54,10 @@ class PagesController < ApplicationController
     @user = current_user
     @transactions = Transaction.order(created_at: :desc )
     @stock_list = current_user.stocks.pluck(:stock_symbol).join(",")
-     @symbol = cookies[:data_symbol]
-    if @symbol.present?
-    @price_data = @clients.price(@symbol)
-    @stocks = current_user.stocks.find_by(stock_symbol: @symbol)
-    end
+    @symbol = cookies[:data_symbol]
+   if @symbol.present?
+    @price_data = @clients.price(@symbol) 
+   end
   end
 
   private
@@ -70,6 +69,7 @@ class PagesController < ApplicationController
     if @search_query.present?
       cookies[:data_symbol] = @search_query
       redirect_to pages_user_path
+      
     end
   end
 
