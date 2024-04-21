@@ -34,52 +34,32 @@ RSpec.describe "User", type: :system do
 
     it "full-transaction" do
       deposit
+      sleep 5 
       click_on 'Dashboard'
+      sleep 5 
       fill_in "search", with: "tsla" 
       click_on '⌕'
       expect(page).to have_link('Buy')
-      click_on 'Buy'
-      fill_in "share amount", with: 1
-      click_on 'buy-submit'
+      buy
       expect(page).to have_link('Sell')
-      click_on 'Sell'
+      sell
+      expect(page).to have_content('TSLA')
+      sleep 5 
+      click_on 'Profile'
+      sleep 5 
+      expect(page).to have_content('TSLA')
     end
 
-    # it "updates trader's email" do
-    #   create_trader
-    #   click_on "Edit"
-    #   fill_in "Email", with: "updated-#{new_trader.email}"
-    #   click_on "Update User"
-    #   expect(page).to have_content("updated-#{new_trader.email}")
-    # end
-
-  #   it "inspect's trader's credentials" do
-  #     create_trader
-  #     click_on "Inspect"
-  #     expect(page).to have_content(new_trader.email)
-  #   end
-
-  #   it "shows all traders" do
-  #     create_trader
-  #     click_on "All Users"
-  #     expect(page).to have_content(new_trader.email)
-  #   end
-
-  #   it "shows all unconfirmed traders" do
-  #     create_trader
-  #     click_on "Pending Confirmation"
-  #     expect(page).to_not have_content(new_trader.email)
-  #   end
-
-  #   it "approves confirmed trader" do
-  #     create_trader
-  #     click_on "Pending Approval"
-  #     expect(page).to have_content(new_trader.email)
-  #   end
-
-  #   it "shows all transactions" do
-  #     expect(page).to have_content("Transactions")
-  #   end
+    it 'edit user' do
+      click_on 'Profile'
+      sleep 3
+      click_on "Edit Profile"
+      fill_in "Email", with: "edited-#{user.email}"
+      fill_in "Password", with: "edited-#{user.password}"
+      fill_in "Password confirmation", with: "edited-#{user.password_confirmation}"
+      fill_in "Current password", with: user.password
+      click_on "Update"
+    end
   end
 
   private
@@ -92,12 +72,27 @@ RSpec.describe "User", type: :system do
       click_on "Log in"
       find('.Dashboard', wait: 10)
   end
+
  def deposit
       click_on 'Profile'
+      sleep 3 
       click_on 'Deposit'
-      sleep 5 # Wait for 1 second
       fill_in "Amount", with: 1000
       click_on 'submit-deposit'
  end
+
+  def buy
+    click_on 'Buy'
+    fill_in "share amount", with: 2
+    click_on 'buy-submit'
+    sleep 5
+  end
+
+  def sell
+    click_on 'Sell'
+    fill_in "share amount", with: 1
+    click_on 'sell-submit'
+    sleep 5
+  end
  
 end

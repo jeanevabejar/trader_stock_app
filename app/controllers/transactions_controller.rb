@@ -23,12 +23,10 @@ end
 
 
 def buy
-    if Transaction.buy(current_user, transaction_params).save
-      redirect_to pages_user_path, notice: "Success buying"
-    else
-        flash[:notice] = "Error in buying"
-      redirect_to pages_user_path  
-    end
+    Transaction.buy(current_user, transaction_params)
+    redirect_to pages_user_path
+rescue ActiveRecord::RecordInvalid
+    redirect_to pages_user_path, notice: "error in selling"
 end
   
 
