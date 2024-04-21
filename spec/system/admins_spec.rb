@@ -71,7 +71,7 @@ RSpec.describe "Admin", type: :system do
     fill_in "Email", with: admin.email
     fill_in "Password", with: admin.password
     click_on "Log in"
-    expect(page).to have_content("Dashboard")
+    expect(page).to have_content("Admin")
   end
 
   def create_trader
