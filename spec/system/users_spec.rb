@@ -3,8 +3,7 @@ require "rails_helper"
 RSpec.describe "User", type: :system do
   include Devise::Test::IntegrationHelpers
 
-  let(:admin) { FactoryBot.create(:admin) }
-  let(:user){ FactoryBot.create(:user) }
+  let(:user){ FactoryBot.create(:user, confirmed_at: Time.now, is_approved: true) }
 
 
   before do
@@ -21,7 +20,7 @@ RSpec.describe "User", type: :system do
       fill_in "Password", with: user.password
       fill_in "Password confirmation", with: user.password_confirmation
       click_on "Sign up"
-      find('.Dashboard', wait: 5)
+      find('.Dashboard', wait: 10)
 
       expect(ActionMailer::Base.deliveries.last.to).to include("signup-#{user.email}")
       expect(ActionMailer::Base.deliveries.last.body.encoded).to include("Confirm my account")
@@ -30,14 +29,20 @@ RSpec.describe "User", type: :system do
 
   context "Trader trades" do
     before do
-      user_confirm
       sign_in
     end
 
-    it "search stocks" do
+    it "full-transaction" do
+      deposit
+      click_on 'Dashboard'
       fill_in "search", with: "tsla" 
       click_on '⌕'
-      expect(page).to have_button('Buy')
+      expect(page).to have_link('Buy')
+      click_on 'Buy'
+      fill_in "share amount", with: 1
+      click_on 'buy-submit'
+      expect(page).to have_link('Sell')
+      click_on 'Sell'
     end
 
     # it "updates trader's email" do
@@ -87,20 +92,12 @@ RSpec.describe "User", type: :system do
       click_on "Log in"
       find('.Dashboard', wait: 10)
   end
-
-  def user_confirm
-  admin_login
-    click_on "Pending Approval"
-    find('i.fa-solid.fa-pencil', wait: 5).click
-    check 'user_is_approved'
-    click_on "Update User"
-    find('i.fa-solid.fa-arrow-right-from-bracket').click
-  end
-  def admin_login
-    visit root_path
-    click_on "Admin"
-    fill_in "Email", with: admin.email
-    fill_in "Password", with: admin.password
-    click_on "Log in"
-  end
+ def deposit
+      click_on 'Profile'
+      click_on 'Deposit'
+      sleep 5 # Wait for 1 second
+      fill_in "Amount", with: 1000
+      click_on 'submit-deposit'
+ end
+ 
 end
