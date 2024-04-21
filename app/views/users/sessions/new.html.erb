@@ -28,7 +28,7 @@
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me %>
+      <%= f.check_box :remember_me, class:" focus:bg-green-700 rounded-md " %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
