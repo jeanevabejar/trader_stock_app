@@ -12,29 +12,38 @@
 <% end %>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const searchForm = document.getElementById("search-form");
-    const searchInput = document.getElementById("search-input");
-    const selectedDataInput = document.getElementById("selected-data");
-    const errorMessage = document.getElementById("error-message");
+ document.addEventListener("DOMContentLoaded", function() {
+  const searchForm = document.getElementById("search-form");
+  const searchInput = document.getElementById("search-input");
+  const selectedDataInput = document.getElementById("selected-data");
+  const errorMessage = document.getElementById("error-message");
+  const dataListOptions = document.getElementById("datalist-options").querySelectorAll("option");
 
-    searchForm.addEventListener("submit", function(event) {
-      event.preventDefault();
-      
-      const selectedOption = document.querySelector(`#datalist-options option[value='${searchInput.value}']`);
+  searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-      if (selectedOption) {
-        selectedDataInput.value = selectedOption.value;
-        searchForm.submit();
-      } else {
-        
-        errorMessage.classList.remove("hidden");
+    let matchFound = false;
+    const inputValue = searchInput.value.toUpperCase(); // Convert input value to uppercase
+
+    dataListOptions.forEach(function(option) {
+      const optionValue = option.value.toUpperCase(); // Convert option value to uppercase
+      if (optionValue === inputValue) {
+        selectedDataInput.value = option.value;
+        matchFound = true;
       }
     });
 
-    
-    searchInput.addEventListener("input", function() {
-      errorMessage.classList.add("hidden");
-    });
+    if (matchFound) {
+      searchForm.submit();
+    } else {
+      errorMessage.classList.remove("hidden");
+    }
   });
+
+  searchInput.addEventListener("input", function() {
+    errorMessage.classList.add("hidden");
+  });
+});
+
+
 </script>
