@@ -15,18 +15,20 @@
     <% @stocks.each do |s| %>
       <tbody>
         <tr>
-            <td><%= s.stock_symbol %></td>
-            <td><%= s.total_share %></td>
+            <td class="center-item flex-col border border-gray-700"><%= s.stock_symbol %>
+            <% company = @clients.company(s.stock_symbol)%>
+            <span class="text-[0.7rem] text-gray-500"><%= company.company_name%></span></td>
+            <td class="border border-gray-700 "><%= s.total_share %></td>
             <% average = @transactions.where(stock_name: s.stock_symbol).average(:price)%>
-            <td><%= number_to_currency(average, precision: 2) %> per share</td>
+            <td class="border border-gray-700 "><%= number_to_currency(average, precision: 2) %> per share</td>
             <% total_cost = average * s.total_share%>
-            <td><%= number_to_currency(total_cost, precision: 2) %></td>
+            <td class="border border-gray-700 "><%= number_to_currency(total_cost, precision: 2) %></td>
             <% current_value = s.total_share * @clients.price(s.stock_symbol)%>
-            <td><%= number_to_currency(current_value, precision: 2) %></td>
+            <td class="border border-gray-700 "><%= number_to_currency(current_value, precision: 2) %></td>
             <% if current_value > total_cost.to_f %>
-              <td class="text-green-600">Profit↑</td>
+              <td class="text-green-600 border border-gray-700">Profit↑</td>
             <% else %>
-              <td class="text-red-600">Loss↓</td>
+              <td class="text-red-600 border border-gray-700">Loss↓</td>
             <% end %>
           
             
