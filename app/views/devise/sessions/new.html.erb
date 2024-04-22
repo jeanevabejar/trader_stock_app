@@ -5,11 +5,7 @@
   <span class="absolute left-16 top-16 flex flex-row justify-center items-center text-3xl pt-5"><img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"><%= link_to 'TraderMaster', root_path %></span>
   <div class="h-auto w-1/3 text-white fixed -translate-x-2/4 -translate-y-2/4 bg-[rgba(0,0,0,0.797)] shadow-[0_0_10px_0_rgba(0,0,0,0.2),0_5px_10px_0_rgba(0,0,0,0.19)] p-[2em] rounded-[5px] left-2/4 top-2/4">
     <span class="flex justify-center mb-5">Admin Sign In</span>
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %> text-red-500">
-        <%= value %>
-      </div>
-    <% end %>
+  
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "max-w-sm mx-auto" }) do |f| %>
       <div class="mb-5">
         <%= f.label :email, class: "block mb-2 text-sm font-medium text-white text-white" %>
