@@ -8,7 +8,7 @@
   <%= form.text_field :stock_name, placeholder: "stock", value: @symbol, class: "text-black rounded-md" %>
   <%= form.hidden_field :is_buy, value: "false"%>
  <div class="flex flex-row justify-between">
-   <%= form.submit "Sell", class: "bg-red-700 h-[5vh] w-[30%] rounded-md" %>
+   <%= form.submit "Sell", class: "bg-red-700 h-[5vh] w-[30%] rounded-md", id: "sell-submit" %>
   <%= link_to "Cancel", pages_user_path, data: {
         controller: "modals",
         action: "modals#close"

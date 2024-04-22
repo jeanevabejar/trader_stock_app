@@ -67,7 +67,7 @@ class PagesController < ApplicationController
     @data = @clients.ref_data_symbols()
     @search_query = params[:data]
     if @search_query.present?
-      cookies[:data_symbol] = @search_query
+      cookies[:data_symbol] = @search_query.upcase
       redirect_to pages_user_path
       
     end

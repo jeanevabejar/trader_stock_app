@@ -1,7 +1,7 @@
 <%= form_with(model: current_user, url: deposit_path, data: {turbo_frame: "_top"}, class: "h-[30vh] w-full flex flex-col gap-[3rem]") do |form| %>
   <%= form.text_field :amount, placeholder: "Amount", class: "text-black rounded-md" %>
   <div class="flex flex-row w-full justify-evenly h-[10vh]">
-    <%= form.submit "Deposit",class: "bg-green-700 h-[5vh] w-[30%] rounded-md" %>
+    <%= form.submit "Deposit",class: "bg-green-700 h-[5vh] w-[30%] rounded-md", id: "submit-deposit" %>
     <%= link_to "Cancel", profile_path, data: {
         controller: "modals",
         action: "modals#close"
