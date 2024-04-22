@@ -1,54 +1,72 @@
-checklist:
+<h1 align="center" id="title">TradeMaster</h1>
 
-Admin 
-- [x] User Story #1: As an Admin, I want to create a new trader to manually add them to the app 
-- [x] User Story #2: As an Admin, I want to edit a specific trader to update his/her details 
-- [x] User Story #3: As an Admin, I want to view a specific trader to show his/her details 
-- [x] User Story #4: As an Admin, I want to see all the trader that registered in the app so I can track all the traders 
-- [x] User Story #5: As an Admin, I want to have a page for pending trader sign up to easily check if there's a new trader sign up 
-- [x] User Story #6: As an Admin, I want to approve a trader sign up so that he/she can start adding stocks 
-- [x] User Story #7: As an Admin, I want to see all the transactions so that I can monitor the transaction flow of the app
+<p>Trade Faster, Trade Smarter.</p>
 
-Trader
-- [x] User Story #1: As a Trader, I want to create an account to buy and sell stocks
-- [x] User Story #2: As a Trader, I want to log in my credentials so that I can access my account on the app
-- [x] User Story #3: As a Trader, I want to receive an email to confirm my pending Account signup
-- [x] User Story #4: As a Trader, I want to receive an approval Trader Account email to notify me once my account has been approved
-- [x] User Story #5: As a Trader, I want to buy a stock to add to my investment(Trader signup should be approved)
-- [x] User Story #6: As a Trader, I want to have a My Portfolio page to see all my stocks
-- [x] User Story #7: As a Trader, I want to have a Transaction page to see and monitor all the transactions made by buying and selling stocks
-- [x] User Story #8: As a Trader, I want to sell my stocks to gain money.
+![alt text](image.png)
 
-gems added:
+<p id="description">A comprehensive stock trading platform designed to cater to both admins and traders.
 
-gem "devise", "~> 4.9"
+For admins, the app provides a robust management system that allows them to manually add new traders, update trader details, and view specific trader information. Admins can track all registered traders and monitor the transaction flow within the app. A dedicated page for pending trader sign-ups makes it easy to check for new trader registrations. Admins also have the authority to approve trader sign-ups, enabling the new traders to start adding stocks.
 
-gem 'iex-ruby-client'
+For traders, TraderMaster offers a seamless trading experience. Traders can create an account, log in with their credentials, and receive email confirmations for their account sign-ups. Once their account is approved, traders can start buying stocks to add to their investments. The app features a ‘My Portfolio’ page where traders can view all their stocks, and a ‘Transaction’ page to monitor all transactions made by buying and selling stocks. Traders also have the option to sell their stocks to earn money.</p>
 
-gem "tailwindcss-rails"
 
-gems added for testing:
+<h2>🛠️ Installation Steps:</h2>
 
-bun = 'bundle install' <br>
+<p>1. Clone our repo</p>
 
-gem 'rspec-rails', '~> 6.1', '>= 6.1.1'<br>
-    bun<br>
-    rails generate rspec:install
+```
+git clone https://github.com/jeanevabejar/trader_stock_app
+```
 
-gem "nyan-cat-formatter"<br>
-    bun<br>
-    gem install nyan-cat-formatter
+<p>2. Navigate to trader_stock_app && Install dependencies</p>
 
-gem 'shoulda-matchers', '~> 6.0'<br>
-    bun<br>
-    shoulda matchers in rails_helper.rb
+```
+bundle install
+```
+
+<p>3. Start App!</p>
+
+```
+bin/dev
+```
+
+<h2>💻 Built with</h2>
+
+- gem "devise", "~> 4.9"
+- gem 'iex-ruby-client'
+- gem "tailwindcss-rails"
+
+<h4>For Testing</h4>
+
+*   gem "capybara"
+*   gem "selenium-webdriver"
+*   gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+*   gem 'database_cleaner-active_record'
+*   gem 'factory_bot_rails'
+*   gem "nyan-cat-formatter"
+*   gem 'shoulda', '5.0.0.rc1'
+
+<h4>💖 Additional Informations for curious cats</h4>
+
+gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
+- bun
+- rails generate rspec:install
+
+gem "nyan-cat-formatter"
+- bun
+- gem install nyan-cat-formatter
+
+gem 'shoulda-matchers', '~> 6.0'
+- bun
+- shoulda matchers in rails_helper.rb
 
 gem 'factory_bot_rails'
-    bun<br>
-    config.include FactoryBot::Syntax::Methods in rails_helper.rb
+- bun
+- config.include FactoryBot::Syntax::Methods in rails_helper.rb
 
-additional rspec vscode extension:<br>
+rspec vscode extension:
 
-vscode-run-rspec-file<br>
-click Gear Icon<br>
-click Extension Keyboard Shortcuts<br>
+- vscode-run-rspec-file
+- click Gear Icon
+- click Extension Keyboard Shortcuts
