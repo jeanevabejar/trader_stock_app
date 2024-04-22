@@ -11,7 +11,7 @@ For admins, the app provides a robust management system that allows them to manu
 For traders, TraderMaster offers a seamless trading experience. Traders can create an account, log in with their credentials, and receive email confirmations for their account sign-ups. Once their account is approved, traders can start buying stocks to add to their investments. The app features a ‘My Portfolio’ page where traders can view all their stocks, and a ‘Transaction’ page to monitor all transactions made by buying and selling stocks. Traders also have the option to sell their stocks to earn money.</p>
 
 
-<h2>🛠️ Installation Steps:</h2>
+<h2>📈Installation :</h2>
 
 <p>1. Clone our repo</p>
 
@@ -31,13 +31,14 @@ bundle install
 bin/dev
 ```
 
-<h2>💻 Built with</h2>
+<h2>📊 Built with</h2>
 
 - gem "devise", "~> 4.9"
 - gem 'iex-ruby-client'
 - gem "tailwindcss-rails"
 
-<h4>For Testing</h4>
+<br>
+<h3>For Testing</h4>
 
 *   gem "capybara"
 *   gem "selenium-webdriver"
@@ -47,24 +48,55 @@ bin/dev
 *   gem "nyan-cat-formatter"
 *   gem 'shoulda', '5.0.0.rc1'
 
-<h4>💖 Additional Informations for curious cats</h4>
+<br>
+
+<h2>💸 Additional Informations for curious cats</h4>
+
+<br>
 
 gem 'rspec-rails', '~> 6.1', '>= 6.1.1'
-- bun
+```
 - rails generate rspec:install
+```
 
+<br>
 gem "nyan-cat-formatter"
-- bun
-- gem install nyan-cat-formatter
 
+
+```
+bundle install
+```
+<br>
+
+```
+gem install nyan-cat-formatter
+```
+
+<br>
 gem 'shoulda-matchers', '~> 6.0'
-- bun
-- shoulda matchers in rails_helper.rb
 
+```
+bundle install
+```
+<br>
+
+```
+shoulda matchers in rails_helper.rb
+```
+
+<br>
 gem 'factory_bot_rails'
-- bun
-- config.include FactoryBot::Syntax::Methods in rails_helper.rb
 
+```
+bundle install
+```
+<br>
+
+```
+config.include FactoryBot::Syntax::Methods in rails_helper.rb
+```
+
+<br>
 rspec vscode extension:
 
 - vscode-run-rspec-file
