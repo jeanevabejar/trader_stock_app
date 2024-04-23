@@ -3,7 +3,6 @@
   <head>
     <title>TraderMaster</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-visit-control" content="reload">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -18,7 +17,7 @@
     class="container full-size relative">
       <%= turbo_frame_tag "modal"%>
       <%= render 'shared/notifications', message: flash[:notice], type: 'notice' %>
-      <%= render 'shared/notifications', message: flash[:error], type: 'error' %>
+      <%= render 'shared/notifications', message: flash[:alert], type: 'alert' %>
       <%= yield %>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     </main>
