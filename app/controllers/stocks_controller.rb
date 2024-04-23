@@ -19,7 +19,7 @@ class StocksController < ApplicationController
         if @user.update(balance: new_balance)
           redirect_to profile_path, notice: 'Balance updated successfully'
         else
-          redirect_to profile_path
+          redirect_to profile_path, error: 'Unsuccessful Deposit'
         end
     end
 

@@ -4,7 +4,7 @@
 
 <h1>Edit User</h1>
    <br>
-<%= form_with(model: @user, url: update_user_path(@user), method: :patch, local: true, data: {turbo_frame: "_top"}) do |form| %>
+<%= form_with(model: @user, url: update_user_path(@user), method: :patch, local: true, data: { turbo: false }) do |form| %>
  <div>
    <%= form.label :email %>
    <%= form.text_field :email, class: "bg-transparent border-x=transparent" %>

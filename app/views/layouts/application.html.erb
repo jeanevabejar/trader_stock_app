@@ -17,8 +17,8 @@
     <main 
     class="container full-size relative">
       <%= turbo_frame_tag "modal"%>
-      <%= render 'shared/notifications', message: flash[:notice] %>
-      <%= render 'shared/notifications', message: flash[:alert] %>
+      <%= render 'shared/notifications', message: flash[:notice], type: 'notice' %>
+      <%= render 'shared/notifications', message: flash[:error], type: 'error' %>
       <%= yield %>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     </main>
