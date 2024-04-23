@@ -13,15 +13,14 @@
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag asset_path('Logos/logo-white-256x256.png') %>
   </head>
-
   <body>
     <main 
     class="container full-size relative">
-    <%= turbo_frame_tag "modal"%>
-    <%= render 'shared/notifications', message: flash[:notice] %>
+      <%= turbo_frame_tag "modal"%>
+      <%= render 'shared/notifications', message: flash[:notice] %>
+      <%= render 'shared/notifications', message: flash[:alert] %>
       <%= yield %>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-
     </main>
   </body>
 </html>

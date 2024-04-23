@@ -19,7 +19,7 @@ class StocksController < ApplicationController
         if @user.update(balance: new_balance)
           redirect_to profile_path, notice: 'Balance updated successfully'
         else
-          render :new_deposit
+          redirect_to profile_path
         end
     end
 
