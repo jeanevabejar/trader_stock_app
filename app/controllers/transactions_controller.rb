@@ -24,17 +24,21 @@ end
 
 def buy
     Transaction.buy(current_user, transaction_params)
+    flash[:notice] = "Successfully brought."
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    redirect_to pages_user_path, notice: "error in selling"
+    flash[:error] = "Insufficient Balance to process."
+    redirect_to pages_user_path
 end
   
 
 def sell
     Transaction.sell(current_user, transaction_params)
+    flash[:notice] = "Successfully Transaction."
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    redirect_to pages_user_path, notice: "error in selling"
+    flash[:error] = "There is an error in your transaction."
+    redirect_to pages_user_path
 end
 
 private

@@ -8,9 +8,8 @@
   <div class="w-[50%] h-[50vh] center-item flex-col border bg-opacity-25 backdrop-filter backdrop-blur-lg p-8 rounded-2xl shadow-lg">
 
 <h2 class="text-[1.5rem] uppercase">Login</h2>
-
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "users/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"text-black rounded-md" %>
