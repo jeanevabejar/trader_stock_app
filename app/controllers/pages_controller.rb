@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     if user_service.create(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully created.'
     else
-      redirect_to pages_admin_path, notice: 'Failed to create Trader.'
+      redirect_to pages_admin_path, alert: 'Failed to create Trader.'
     end
   end
 
@@ -35,7 +35,7 @@ class PagesController < ApplicationController
     if user_service.update(user_params)
       redirect_to pages_admin_path, notice: 'User was successfully updated.'
     else
-      redirect_to pages_admin_path, notice: 'Error updating User.'
+      redirect_to pages_admin_path, alert: 'Error updating User.'
     end
   end
 
@@ -79,14 +79,14 @@ class PagesController < ApplicationController
 
   def require_admin
     unless admin_signed_in?
-      flash[:notice] = "You need to be an admin to access admin pages."
+      flash[:alert] = "You need to be an admin to access admin pages."
       redirect_to pages_user_path
     end
   end
 
   def require_user
     unless user_signed_in?
-      flash[:notice] = "The page you're trying to access is for Traders only."
+      flash[:alert] = "The page you're trying to access is for Traders only."
       redirect_to pages_admin_path
     end
   end
