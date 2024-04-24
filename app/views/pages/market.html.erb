@@ -1,54 +1,10 @@
-<div class=" h-screen flex flex-col  relative overflow-auto scroll gap-[5rem] items-center pb-[5rem]">
-  <div class="w-full h-[5vh] absolute top-0 bg-opacity-25 backdrop-filter backdrop-blur-lg p-8 shadow-lg text-white flex items-center justify-between opacity-0 transition-opacity duration-300 hover-hidden "><%= link_to pages_user_path, class:"text-[2.5rem]" do %><i class="fa-sharp fa-solid fa-left-long"></i>
+<div class=" h-screen flex flex-col  relative overflow-auto scroll gap-[5rem] items-center ">
+  <div class="w-full h-[5vh] fixed top-0 bg-opacity-25 backdrop-filter backdrop-blur-lg p-8 shadow-lg text-white flex items-center justify-between opacity-0 transition-opacity duration-300 hover-hidden "><%= link_to pages_user_path, class:"text-[2.5rem]" do %><i class="fa-sharp fa-solid fa-left-long"></i>
     <% end %>
-     <h1 class="font-bold text-4xl flex flex-row"> <img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white">TradeMaster</h1>
+    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white">TradeMaster</h1>
   </div>
-  <div class="w-full"><!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {
-          "symbols": [
-            {
-              "description": "Tesla",
-              "proName": "NASDAQ:TSLA"
-            },
-            {
-              "description": "Apple Inc",
-              "proName": "NASDAQ:AAPL"
-            },
-            {
-              "description": "Nvidia",
-              "proName": "NASDAQ:NVDA"
-            },
-            {
-              "description": "Microsoft",
-              "proName": "NASDAQ:MSFT"
-            },
-            {
-              "description": "Advanced Micro Devices",
-              "proName": "NASDAQ:AMD"
-            },
-            {
-              "description": "Meta",
-              "proName": "NASDAQ:META"
-            },
-            {
-              "description": "Netflix",
-              "proName": "NASDAQ:NFLX"
-            }
-          ],
-          "showSymbolLogo": true,
-          "colorTheme": "dark",
-          "isTransparent": false,
-          "displayMode": "compact",
-          "locale": "en"
-        }
-      </script>
-    </div>
-    <!-- TradingView Widget END -->
-  </div>
-  <div class="w-[80%] min-h-[90vh]">
+  
+  <div class="w-full min-h-screen">
     <div class="tradingview-widget-container"></div>
     <div class="tradingview-widget-container__widget"></div>
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
@@ -70,8 +26,8 @@
       }
     </script>
   </div>
-  <div class="w-[80%] h-[70vh] flex flex-row justify-between">
-    <div class="w-[30%] h-[70vh] bg-gray-700">
+  <div class="w-[90%] h-[70vh] flex flex-row justify-between">
+    <div class="w-[20%] h-[70vh] bg-gray-700">
       <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
@@ -219,7 +175,7 @@
       </div>
       <!-- TradingView Widget END -->
     </div>
-    <div class="w-[30%] h-[70vh] bg-gray-700">
+    <div class="w-[20%] h-[70vh] bg-gray-700">
       <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container">
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
@@ -236,10 +192,11 @@
       </div>
       <!-- TradingView Widget END -->
     </div>
-    <div class="w-[30%] h-[70vh] bg-gray-700">
+    <div class="w-[45%] h-[70vh] bg-gray-700">
       <!-- TradingView Widget BEGIN -->
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
+
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
           {
           "width": "100%",
@@ -247,7 +204,7 @@
           "defaultColumn": "overview",
           "defaultScreen": "most_capitalized",
           "market": "america",
-          "showToolbar": true,
+          "showToolbar": false,
           "colorTheme": "dark",
           "locale": "en",
           "isTransparent": true
@@ -257,5 +214,50 @@
       <!-- TradingView Widget END -->
     </div>
   </div>
+  <div class="w-full"><!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            {
+              "description": "Tesla",
+              "proName": "NASDAQ:TSLA"
+            },
+            {
+              "description": "Apple Inc",
+              "proName": "NASDAQ:AAPL"
+            },
+            {
+              "description": "Nvidia",
+              "proName": "NASDAQ:NVDA"
+            },
+            {
+              "description": "Microsoft",
+              "proName": "NASDAQ:MSFT"
+            },
+            {
+              "description": "Advanced Micro Devices",
+              "proName": "NASDAQ:AMD"
+            },
+            {
+              "description": "Meta",
+              "proName": "NASDAQ:META"
+            },
+            {
+              "description": "Netflix",
+              "proName": "NASDAQ:NFLX"
+            }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "compact",
+          "locale": "en"
+        }
+      </script>
+    </div>
+    <!-- TradingView Widget END -->
+  </div>
 </div>
-</div>
+

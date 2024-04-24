@@ -10,14 +10,18 @@
   <!-- #middle container -->
   <div class=" min-w-full max-w-full h-[70vh] flex flex-row">
 
+      <!-- #marketlist container -->
+    <div class=" w-[25%] h-[70vh] text-[0.8rem] center-item flex-col truncate">
+      <%= render 'pages/user/market_list' %>
+    </div>
     <!-- #chart container -->
-    <div class="h-[70vh] w-[70%]">
+    <div class="h-[70vh] w-[50%]">
       <div class="h-[70vh] w-full center-item">
         <%= render 'pages/user/chart' %>
       </div>
     </div>
     <!-- #transaction container -->
-    <div class="border border-gray-700 w-[30%] h-[70vh] center-item flex-col justify-evenly" >
+    <div class="border border-gray-700 w-[25%] h-[70vh] center-item flex-col justify-evenly" >
       <div class="h-[10vh] w-full center-item flex flex-col">
         <div id="error-message" class="text-red-500 hidden text-[0.7rem]">Please select a valid option from the list.</div>
         <%= render 'pages/user/search_form' %>
