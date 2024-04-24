@@ -2,9 +2,9 @@
 <div class="primary-color text-white full-size overflow-hidden relative">
 
   <!-- #navbar -->
-  <div class=" flex justify-between">
+  <div class=" flex justify-between pt-3">
     
-    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TraderMaster</h1>
+    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white">TradeMaster</h1>
     <div class="w-[20%] flex flex-row justify-evenly center-item">
       <%= link_to 'Dashboard', pages_user_path, class: "Dashboard w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(pages_user_path)}" %>
       <%= link_to 'Profile', profile_path, class:"w-[50%] hover:text-blue-500 center-item" %>
