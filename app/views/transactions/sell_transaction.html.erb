@@ -1,8 +1,5 @@
 <%= turbo_frame_tag "modal" do%>
-<div class="modal primary-color text-white w-[20%] h-[45vh] flex flex-col justify-evenly overflow-hidden">
-    <h1 class="text-blue-700 font-bold">Sell Transaction :<%= @symbol%></h1><br>
-<%= render 'sell_form' %>
-
-</div>
-
+  <div class="modal primary-color text-white w-[20%] h-[45vh] flex flex-col justify-evenly overflow-hidden">
+    <%= render 'sell_form' %>
+  </div>
 <% end %>

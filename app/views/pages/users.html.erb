@@ -1,9 +1,6 @@
-  
 <div class="primary-color text-white full-size overflow-hidden relative">
-
   <!-- #navbar -->
   <div class=" flex justify-between pt-3">
-    
     <h1 class="font-bold text-4xl flex flex-row"> <img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white">TradeMaster</h1>
     <div class="w-[20%] flex flex-row justify-evenly center-item">
       <%= link_to 'Dashboard', pages_user_path, class: "Dashboard w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(pages_user_path)}" %>
@@ -32,7 +29,7 @@
     <!-- #transaction container -->
     <div class="border border-gray-700 w-[25%] h-[70vh] center-item flex-col justify-evenly" >
       <div class="h-[10vh] w-full center-item flex flex-col">
-          <div id="error-message" class="text-red-500 hidden text-[0.7rem]">Please select a valid option from the list.</div>
+        <div id="error-message" class="text-red-500 hidden text-[0.7rem]">Please select a valid option from the list.</div>
         <%= render 'pages/user/search_form' %>
       </div>
       <div class="h-[60vh] w-full center-item justify-evenly flex-col ">
@@ -40,10 +37,12 @@
           <div class="w-full ">
             <%= render 'pages/user/stock_info' %>
           </div>
-          <div class="w-[50%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase hover:bg-green-500">
-            <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %></div>
-          <div class="w-[50%] h-[8vh] rounded-lg bg-red-700 center-item text-[1.5rem] uppercase hover:bg-red-500">
-            <%= link_to 'Sell', sell_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %>
+          <div class="w-full flex flex-row justify-evenly"> 
+            <div class="w-[40%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase hover:bg-green-500">
+              <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %></div>
+            <div class="w-[40%] h-[8vh] rounded-lg bg-red-700 center-item text-[1.5rem] uppercase hover:bg-red-500">
+              <%= link_to 'Sell', sell_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %>
+            </div>
           </div>
         <% elsif current_user.is_approved == true  && @symbol.present? && @stock_list.include?(@symbol) == false %>
           <div class="w-full">

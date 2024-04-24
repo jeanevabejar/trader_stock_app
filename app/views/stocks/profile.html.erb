@@ -1,11 +1,10 @@
 <div class="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
-   <img class="full-size blur-md" src="<%= image_path('background.jpg') %>" alt="background image">
+  <img class="full-size blur-md" src="<%= image_path('background.jpg') %>" alt="background image">
 </div>
 <div class=" w-full h-screen flex flex-col gap-[5rem] items-center overflow-auto scroll">
- 
-  <!-- #navbar --> 
-  <div class=" border border-gray-700 flex justify-between w-full text-white fixed z-10 primary-color">
-    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TraderMaster</h1>
+  <!-- #navbar -->
+  <div class=" flex justify-between w-full text-white fixed z-10 primary-color">
+    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TradeMaster</h1>
     <div class="w-[20%] flex flex-row justify-evenly center-item">
       <%= link_to 'Dashboard', pages_user_path, class: "w-[50%] hover:text-blue-500 center-item" %>
       <%= link_to 'Profile', profile_path, class: "w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(profile_path)}" %>
@@ -14,7 +13,6 @@
       </div>
     </div>
   </div>
-  
   <!-- #user-info -->
   <div class=" max-w-[90%] min-w-[90%] text-white flex flex-col gap-[4rem] mt-[5rem] ">
     <div class="w-full h-[50vh] border border-gray-700 center-item flex-row primary-color rounded-lg">
@@ -22,26 +20,35 @@
         <%= image_tag 'trader-img', class: "rounded-full w-[70%] h-[40vh]"%>
       </div>
       <div class="w-[70%] h-[50vh] flex justify-center flex-col p-[1rem] gap-2">
-        <h1 class="text-[1.5rem] capitalize">Username: <%= current_user.email.split("@")[0]%></h1>
-        <h1 class="text-[1.5rem]">Email: <%= current_user.email%> </h1>
-        <h1 class="text-[1.5rem]">Balance: <%= number_to_currency(current_user.balance, precision: 2) %> </h1>
-        <div class="w-[40%] mt-4 flex flex-row justify-between">
-          <%= link_to "Edit Profile", edit_user_registration_path , class:"block",  data: { turbo_frame: "modal"}, class:"w-[40%] h-[5vh] center-item bg-blue-700 font-bold rounded-md hover:bg-blue-500" %>
-          <%= link_to "Deposit", deposit_transaction_path , class:"block",  data: { turbo_frame: "modal"}, class:"w-[40%] h-[5vh] center-item bg-blue-700 font-bold rounded-md hover:bg-blue-500" %>
+        <h1 class="text-[2rem] capitalize font-bold "> 👋 Hi! <%= current_user.email.split("@")[0]%></h1>
+        <div class="w-[40%] flex flex-row justify-between">
+          <%= link_to "Edit Profile", edit_user_registration_path , class:"block",  data: { turbo_frame: "modal"}, class:"w-[40%] h-[5vh] center-item bg-blue-700 font-bold rounded-md hover:bg-blue-500 truncate" %>
+          <%= link_to "Deposit", deposit_transaction_path , class:"block",  data: { turbo_frame: "modal"}, class:"w-[40%] h-[5vh] center-item bg-blue-700 font-bold rounded-md hover:bg-blue-500 truncate" %>
+        </div>
+        <div class="flex flex-row h-[20vh] items-center gap-[3rem] ">
+          <div class=" h-[14vh] w-[25%] rounded-md flex flex-col p-4 bg-orange-500 ">
+            <h1 class="font-bold truncate text-[1rem] text-gray-300">Current Balance 💵</h1>
+            <h1 class="text-[2rem]"><%= number_to_currency(current_user.balance, precision: 2) %></h1>
+          </div>
+          <% sum_values = @stocks.map { |s| s.total_share * @clients.price(s.stock_symbol)}.sum  %>
+          <div class=" h-[14vh] w-[25%] rounded-md flex flex-col p-4 bg-blue-500 ">
+            <h1 class="font-bold truncate text-[1rem] text-gray-300">Portfolio Value</h1>
+            <h1 class="text-[2rem]"><%= number_to_currency(current_user.balance + sum_values , precision: 2) %> </h1>
+          </div>
         </div>
       </div>
     </div>
-
-  <!-- #stocklist -->
+    <!-- #stocklist -->
     <div class="w-full max-h-[100vh] border border-gray-700 p-5 overflow-auto scroll flex flex-col gap-[1rem] primary-color rounded-lg">
       <h1 class="text-[1.5rem] font-semibold uppercase">Stocks Portfolio</h1>
       <%= render 'stocks/stock_list' %>
     </div>
-
-  <!-- #transaction list -->
-    <div class="w-full max-h-[50vh] border border-gray-700 overflow-auto scroll p-5 flex flex-col gap-[1rem] mb-[5rem] primary-color rounded-lg">
+    <!-- #transaction list -->
+    <div class="w-full max-h-[60vh] border border-gray-700  p-5 flex flex-col gap-[1rem] mb-[5rem] primary-color rounded-lg">
       <h1 class="text-[1.5rem] font-semibold uppercase">Transaction History</h1>
-      <%= render 'stocks/transaction_history' %>
+      <div class="max-h-[50vh] overflow-auto scroll">
+        <%= render 'stocks/transaction_history' %>
+      </div>
     </div>
   </div>
 </div>

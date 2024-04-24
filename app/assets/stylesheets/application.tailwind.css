@@ -79,5 +79,20 @@
        opacity: 1;
     }
    }
-  
+
+   .fadeout {
+    animation: fadeOut 7s ease forwards;
+  }
+    
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 }
