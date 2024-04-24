@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "modal" do%>
-<div class="modal primary-color text-white w-[20%] h-[45vh] flex flex-col justify-evenly overflow-hidden">
-<h1 class="text-blue-700 font-bold">Buy Transaction :<%= @symbol%></h1><br>
+<div class="modal primary-color text-white w-[20%] h-[45vh] flex flex-col justify-evenly overflow-hidden gap-4">
+    <h1>Balance: <%= number_to_currency(current_user.balance, precision: 2)%></h1>
 <%= render 'buy_form' %>
 </div>
 <% end %>

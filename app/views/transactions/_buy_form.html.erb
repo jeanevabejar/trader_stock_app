@@ -1,13 +1,14 @@
 <%= form_with(model: @transaction, url: buy_path, data: { turbo: false }, class: "h-[40vh] flex flex-col justify-between") do |form| %>
-<div class="bg-white flex flex-row rounded-md">
-   <%= form.text_field :price, value: @price_data, placeholder: "price", class: "text-black rounded-md w-[60%] border-none " %> <span class="text-green-700 center-item truncate">USD<%= number_to_currency(@price_data, precision: 2) %></span>
+  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol, class: "text-black rounded-md" %>
+<div class="bg-white flex flex-row rounded-md px-2 gap-2">
+   <%= form.text_field :price, value: @price_data, placeholder: "price", class: "text-black w-[80%] border-none " %> <span class="text-green-700 truncate center-item">USD</span>
 </div>
  
   <%= form.text_field :share, placeholder: "share amount", class: "text-black rounded-md" %>
-  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol, class: "text-black rounded-md" %>
+
   <%= form.hidden_field :is_buy, value: "true"%>
  <div class="flex flex-row justify-between">
-   <%= form.submit "Buy", class: "bg-green-700 h-[5vh] w-[30%] rounded-md", id: "buy-submit"  %>
+   <%= form.submit "Buy", class: "bg-green-700 h-[5vh] w-[30%] rounded-md cursor-pointer", id: "buy-submit"  %>
   <%= link_to "Cancel", pages_user_path, data: {
         controller: "modals",
         action: "modals#close"

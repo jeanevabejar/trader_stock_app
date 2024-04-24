@@ -24,7 +24,7 @@ end
 
 def buy
     Transaction.buy(current_user, transaction_params)
-    flash[:notice] = "Successfully brought."
+    flash[:notice] = "Successful Transaction."
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
     flash[:alert] = "Insufficient Balance to process."
@@ -34,7 +34,7 @@ end
 
 def sell
     Transaction.sell(current_user, transaction_params)
-    flash[:notice] = "Successfully Transaction."
+    flash[:notice] = "Successful Transaction."
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
     flash[:alert] = "There is an error in your transaction."

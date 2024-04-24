@@ -1,14 +1,16 @@
 <%= form_with(model: @transaction, url: sell_path, data: { turbo: false }, class: "h-[45vh] flex flex-col justify-between") do |form| %>
-  <h1 class="text-center">Remaining Share : <%= @stocks.total_share%></h1>
-<div class="bg-white flex flex-row rounded-md">
-   <%= form.text_field :price, value: @price_data, placeholder: "price", class: "text-black rounded-md w-[60%] border-none" %> <span class="text-green-700 center-item truncate">USD<%= number_to_currency(@price_data, precision: 2) %></span>
+
+  <h1 class="text-center text-green-500 font-bold uppercase">Remaining Share : <%= @stocks.total_share%></h1>
+    <%= form.text_field :stock_name, placeholder: "stock", value: @symbol, class: "text-black rounded-md" %>
+<div class="bg-white flex flex-row rounded-md px-2 gap-2">
+   <%= form.text_field :price, value: @price_data, placeholder: "price", class: "text-black w-[80%] border-none" %> <span class="text-green-700 center-item truncate">USD</span>
 </div>
  
   <%= form.text_field :share, placeholder: "share amount", class: "text-black rounded-md" %>
-  <%= form.text_field :stock_name, placeholder: "stock", value: @symbol, class: "text-black rounded-md" %>
+
   <%= form.hidden_field :is_buy, value: "false"%>
  <div class="flex flex-row justify-between">
-   <%= form.submit "Sell", class: "bg-red-700 h-[5vh] w-[30%] rounded-md", id: "sell-submit" %>
+   <%= form.submit "Sell", class: "bg-red-700 h-[5vh] w-[30%] rounded-md cursor-pointer", id: "sell-submit" %>
   <%= link_to "Cancel", pages_user_path, data: {
         controller: "modals",
         action: "modals#close"
