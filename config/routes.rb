@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'admin/show_user/:id', to: 'pages#show_user', as: :show_user
 
   post '/dashboard/user', to: 'pages#users'
+  get '/market', to: 'pages#market', as: :market
 
   get '/transaction/buy', to: 'transactions#buy_transaction', as: :buy_transaction
   post '/transaction/buy', to: 'transactions#buy', as: :buy
@@ -33,5 +34,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'stocks#profile', as: :profile
   get '/profile/cashin', to: 'stocks#new_deposit', as: :deposit_transaction
   patch '/profile/cashin', to: 'stocks#deposit', as: :deposit
+
 
 end

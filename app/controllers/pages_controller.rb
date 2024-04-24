@@ -60,6 +60,9 @@ class PagesController < ApplicationController
    end
   end
 
+  def market
+  end
+
   private
 
   def search

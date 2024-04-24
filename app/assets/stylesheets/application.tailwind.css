@@ -93,6 +93,10 @@
     opacity: 0;
   }
 }
+.hover-hidden:hover{
+  opacity: 1;
+}
+
 
 
 }
