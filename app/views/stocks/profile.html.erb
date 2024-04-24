@@ -3,15 +3,8 @@
 </div>
 <div class=" w-full h-screen flex flex-col gap-[5rem] items-center overflow-auto scroll">
   <!-- #navbar -->
-  <div class=" flex justify-between w-full text-white fixed z-10 primary-color">
-    <h1 class="font-bold text-4xl flex flex-row"> <img class="w-[10%] h-[5vh]" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white"> TradeMaster</h1>
-    <div class="w-[20%] flex flex-row justify-evenly center-item">
-      <%= link_to 'Dashboard', pages_user_path, class: "w-[50%] hover:text-blue-500 center-item" %>
-      <%= link_to 'Profile', profile_path, class: "w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(profile_path)}" %>
-      <div class=" relative w-[50%] capitalize text-center hover:text-blue-500">
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete }, class:"block"%>
-      </div>
-    </div>
+  <div class=" flex justify-between w-full text-white fixed z-10 primary-color border border-gray-700">
+   <%= render 'pages/user/navbar' %>
   </div>
   <!-- #user-info -->
   <div class=" max-w-[90%] min-w-[90%] text-white flex flex-col gap-[4rem] mt-[5rem] ">
@@ -26,14 +19,14 @@
           <%= link_to "Deposit", deposit_transaction_path , class:"block",  data: { turbo_frame: "modal"}, class:"w-[40%] h-[5vh] center-item bg-blue-700 font-bold rounded-md hover:bg-blue-500 truncate" %>
         </div>
         <div class="flex flex-row h-[20vh] items-center gap-[3rem] ">
-          <div class=" h-[14vh] w-[25%] rounded-md flex flex-col p-4 bg-orange-500 ">
+          <div class=" h-[14vh] w-[25%] rounded-md flex flex-col justify-center p-4 bg-orange-500 ">
             <h1 class="font-bold truncate text-[1rem] text-gray-300">Current Balance 💵</h1>
-            <h1 class="text-[2rem]"><%= number_to_currency(current_user.balance, precision: 2) %></h1>
+            <h1 class="text-[2.5rem] font-bold"><%= number_to_currency(current_user.balance, precision: 2) %></h1>
           </div>
           <% sum_values = @stocks.map { |s| s.total_share * @clients.price(s.stock_symbol)}.sum  %>
-          <div class=" h-[14vh] w-[25%] rounded-md flex flex-col p-4 bg-blue-500 ">
+          <div class=" h-[14vh] w-[25%] rounded-md flex flex-col justify-center p-4 bg-blue-500 ">
             <h1 class="font-bold truncate text-[1rem] text-gray-300">Portfolio Value</h1>
-            <h1 class="text-[2rem]"><%= number_to_currency(current_user.balance + sum_values , precision: 2) %> </h1>
+            <h1 class="text-[2.5rem] font-bold"><%= number_to_currency(current_user.balance + sum_values , precision: 2) %> </h1>
           </div>
         </div>
       </div>
