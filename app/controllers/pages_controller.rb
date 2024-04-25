@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @users = User.all.order("id")
     @to_be_approved = @users.confirmed_users
     @to_be_confirmed = @users.to_confirmed_users
-    @active_traders = @users.active_users
+    @active_traders = User.active_users
     @transactions = Transaction.all
   end
 
@@ -56,7 +56,7 @@ class PagesController < ApplicationController
     @stock_list = current_user.stocks.pluck(:stock_symbol).join(",")
     @symbol = cookies[:data_symbol]
    if @symbol.present?
-    @price_data = @clients.price(@symbol) 
+    @price_data = @clients.price(@symbol)
    end
   end
 
@@ -72,7 +72,7 @@ class PagesController < ApplicationController
     if @search_query.present?
       cookies[:data_symbol] = @search_query.upcase
       redirect_to pages_user_path
-      
+
     end
   end
 
