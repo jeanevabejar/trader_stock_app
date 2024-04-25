@@ -1,7 +1,7 @@
  <h1 class="font-bold text-4xl flex flex-row"> <img class="w-10 h-10" src="<%= image_path('Logos/logo-white-256x256.png') %>" alt="logo white">TradeMaster</h1>
     <div class="w-[30%] flex flex-row justify-evenly center-item">
       <%= link_to 'Market', market_path, class: "w-[50%] hover:text-blue-500 center-item" %>
-      <%= link_to 'Dashboard', pages_user_path, class: " w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(pages_user_path)}" %>
+      <%= link_to 'Dashboard', pages_user_path, class: " Dashboard w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(pages_user_path)}" %>
       <%= link_to 'Profile', profile_path, class:"w-[50%] hover:text-blue-500 center-item #{'text-blue-500' if current_page?(profile_path)}" %>
       <div class=" relative w-[50%] capitalize text-center hover:text-blue-500">
         <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: {  turbo_method: :delete }, class:"block"%>

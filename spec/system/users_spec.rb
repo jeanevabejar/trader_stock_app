@@ -39,6 +39,7 @@ RSpec.describe "User", type: :system do
       sleep 5 
       fill_in "search", with: "tsla" 
       click_on '⌕'
+      sleep 5 
       expect(page).to have_link('Buy')
       buy
       expect(page).to have_link('Sell')
