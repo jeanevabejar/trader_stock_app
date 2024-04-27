@@ -21,12 +21,12 @@
         <div class="flex flex-row h-[20vh] items-center gap-[3rem] ">
           <div class=" h-[14vh] w-[25%] rounded-md flex flex-col justify-center p-4 bg-orange-500 ">
             <h1 class="font-bold truncate text-[1rem] text-gray-300">Current Balance 💵</h1>
-            <h1 class="text-[2.5rem] font-bold"><%= number_to_currency(current_user.balance, precision: 2) %></h1>
+            <h1 class="text-[2.3rem] font-bold"><%= number_to_currency(current_user.balance, precision: 2) %></h1>
           </div>
           <% sum_values = @stocks.map { |s| s.total_share * @clients.price(s.stock_symbol)}.sum  %>
           <div class=" h-[14vh] w-[25%] rounded-md flex flex-col justify-center p-4 bg-blue-500 ">
             <h1 class="font-bold truncate text-[1rem] text-gray-300">Portfolio Value</h1>
-            <h1 class="text-[2.5rem] font-bold"><%= number_to_currency(current_user.balance + sum_values , precision: 2) %> </h1>
+            <h1 class="text-[2.3rem] font-bold"><%= number_to_currency(current_user.balance + sum_values , precision: 2) %> </h1>
           </div>
         </div>
       </div>

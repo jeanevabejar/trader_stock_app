@@ -44,7 +44,7 @@
           </div>
           <div class="w-[50%] h-[8vh] rounded-lg bg-green-700 center-item text-[1.5rem] uppercase">
             <%= link_to 'Buy', buy_transaction_path, data: { turbo_frame: "modal"}, class: "w-full center-item" %></div>
-        <% elsif !@symbol.present? %>
+        <% elsif current_user.is_approved == true && !@symbol.present? %>
           <h1 class="text-center text-gray-500 font-bold text-[1.5rem]">"Select the stock to trade."</h1>
         <% else %>
           <h1 class="text-center text-gray-500 font-bold text-[1.5rem] p-4">"To transact, <br>
