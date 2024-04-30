@@ -24,20 +24,24 @@ end
 
 def buy
     Transaction.buy(current_user, transaction_params)
+    if transaction_params[:share].to_i > 0
     flash[:notice] = "Successful Transaction."
+    end
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    flash[:alert] = "Insufficient Balance to process."
+    flash[:alert] = "Please check your Balance or input share to process."
     redirect_to pages_user_path
 end
   
 
 def sell
     Transaction.sell(current_user, transaction_params)
+    if transaction_params[:share].to_i > 0
     flash[:notice] = "Successful Transaction."
+    end
     redirect_to pages_user_path
 rescue ActiveRecord::RecordInvalid
-    flash[:alert] = "There is an error in your transaction."
+    flash[:alert] = "There is an error in this transaction. kindly check your inputs."
     redirect_to pages_user_path
 end
 
