@@ -35,13 +35,11 @@
 
    <div class="actions py-4 ">
     <%= f.submit "Update", class: "h-[5vh] w-[30%] border border-blue-700 rounded-md hover:bg-blue-700 hover:border-none"  %>
-    
-  <div class="p-2">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "hover:italic hover:underline" %></div>
-  </div>
-
+     </div>
 
  
 <% end %>
+  <div class="p-2 w-full flex flex-row">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "hover:italic hover:underline" %></div>
 
 
 <%= link_to "Cancel", profile_path, data: {

@@ -6,8 +6,8 @@ class User < ApplicationRecord
   validates :balance, numericality: { greater_than_or_equal_to: 0 }
 
 
-  has_many :transactions
-  has_many :stocks
+  has_many :transactions, dependent: :destroy
+  has_many :stocks, dependent: :destroy
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
