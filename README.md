@@ -1,4 +1,4 @@
-<h1 align="center" id="title">Trade Master</h1>
+<h1 align="center" id="title">TradeMaster</h1>
 
 <p>Trade Faster, Trade Smarter.</p>
 
@@ -7,15 +7,16 @@
 <p id="description">A comprehensive stock trading platform designed to cater to both admins and traders.
 <br>
 
+![image](https://github.com/jeanevabejar/trader_stock_app/assets/144686514/5721929f-6c95-46d9-8b9a-3c5a094c2f0f)
+
+For traders, TradeMaster offers a seamless trading experience. Traders can create an account, log in with their credentials, and receive email confirmations for their account sign-ups. Once their account is approved, traders can start buying stocks to add to their investments. The app features a ‘Portfolio’ page where traders can view all their stocks, and a ‘Transaction’ page to monitor all transactions made by buying and selling stocks. Traders also have the option to sell their stocks to earn money.</p>
+<br>
+<br>
+
 ![alt text](image-1.png)
 
 For admins, the app provides a robust management system that allows them to manually add new traders, update trader details, and view specific trader information. Admins can track all registered traders and monitor the transaction flow within the app. A dedicated page for pending trader sign-ups makes it easy to check for new trader registrations. Admins also have the authority to approve trader sign-ups, enabling the new traders to start adding stocks.
 <br>
-
-![alt text](image-2.png)
-
-For traders, TradeMaster offers a seamless trading experience. Traders can create an account, log in with their credentials, and receive email confirmations for their account sign-ups. Once their account is approved, traders can start buying stocks to add to their investments. The app features a ‘My Portfolio’ page where traders can view all their stocks, and a ‘Transaction’ page to monitor all transactions made by buying and selling stocks. Traders also have the option to sell their stocks to earn money.</p>
-
 
 <h2>📈Installation :</h2>
 
