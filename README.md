@@ -2,8 +2,10 @@
 
 <p>Trade Faster, Trade Smarter.</p>
 
-![alt text](image.png)
+![image](https://github.com/jeanevabejar/trader_stock_app/assets/144686514/47c65e86-5928-457f-948d-875b3d58b27d)
 
+<br>
+<br>
 <p id="description">A comprehensive stock trading platform designed to cater to both admins and traders.
 <br>
 
