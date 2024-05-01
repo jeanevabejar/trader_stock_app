@@ -5,8 +5,8 @@
 ![image](https://github.com/jeanevabejar/trader_stock_app/assets/144686514/47c65e86-5928-457f-948d-875b3d58b27d)
 
 <br>
-<br>
 <p id="description">A comprehensive stock trading platform designed to cater to both admins and traders.
+<br>
 <br>
 
 ![image](https://github.com/jeanevabejar/trader_stock_app/assets/144686514/5721929f-6c95-46d9-8b9a-3c5a094c2f0f)
